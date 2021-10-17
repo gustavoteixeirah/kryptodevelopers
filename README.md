@@ -1,5 +1,4 @@
-# Eat The Blocks 
-## NFT Project
+# Eat The Blocks NFT Project
 
 
 This is the repository of the source code for the NFT collection developed for the Eat The Blocks NFT Project
