@@ -40,9 +40,7 @@ def createCombo():
         return trait
     
 for i in range(TOTAL_DEVELOPERS):
-    
     newtraitcombo = createCombo()
-    
     traits.append(newtraitcombo)
 
 
@@ -52,7 +50,7 @@ def allUnique(x):
     seen = list()
     return not any(i in seen or seen.append(i) for i in x)
 
-print(allUnique(traits))
+print("All unique?" + str(allUnique(traits)))
 
 
 # ADD TOKEN IDS TO JSON
@@ -61,11 +59,6 @@ i = 0
 for item in traits:
     item["tokenId"] = i
     i = i + 1
-
-
-# PRINT THE SHIT
-
-print(traits)
 
 
 # GET TRAIT COUNTS
@@ -101,5 +94,5 @@ print("face accessory:", faceaccessorycounts)
 print("hair accessory:", haircounts)
 
 
-with open('traits2.json', 'w') as outfile:
+with open('traits.json', 'w') as outfile:
     json.dump(traits, outfile, indent=4)
