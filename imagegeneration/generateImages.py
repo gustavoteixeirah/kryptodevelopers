@@ -1,46 +1,35 @@
 from PIL import Image, ImageOps
 from IPython.display import display
 import json
-
+import os
+path = os. getcwd()
+print(path)
 # READ METADATA
-with open("../traitsgeneration/traits.json", 'r') as f:
+with open("./traits.json", 'r') as f:
         traits = json.load(f)
-
-backgroundfiles = {
-    "Bedroom": "bg1",
-    "Mint": "bg2",
-    "Pink": "bg3",
-    "Grey": "bg4",
-    "Baby Blue": "bg5",
-    "Amber": "bg6",
-    "Purple Haze": "bg7",
-    "Sherbert": "bg8",
-    "Northern Lights": "bg9",
-    "Downtown": "bg10",
-    "Tag it": "bg11",
-    "Gold": "bg12"
-}
-
+        
 #### IMAGE GENERATION
 for trait in traits:
-
-    im1 = Image.open(f'../images/backgrounds/{backgroundfiles[trait["Background"]]}.jpg').convert('RGBA')
-    im1 = Image.open(f'../images/backgrounds/{backgroundfiles[trait["Background"]]}.jpg').convert('RGBA')
-
+    print(trait)
+    background = Image.open(f'{path}/images/background/{trait["Background"]}.png').convert('RGBA')
+    developer = Image.open(f'{path}/images/developer/{trait["Developer"]}.png').convert('RGBA')
+    accessory = Image.open(f'{path}/images/accessory/{trait["Accessory"]}.png').convert('RGBA')
+    hair = Image.open(f'{path}/images/hair/{trait["Hair"]}.png').convert('RGBA')
+    painting = Image.open(f'{path}/images/painting/{trait["Painting"]}.png').convert('RGBA')
 
     #Create each composite
-    com1 = Image.alpha_composite(im1, im2)
-    com2 = Image.alpha_composite(com1, im3)
-    com3 = Image.alpha_composite(com2, im4)
-    com4 = Image.alpha_composite(com3, im5)
+    com1 = Image.alpha_composite(background, developer)
+    com2 = Image.alpha_composite(com1, accessory)
+    com3 = Image.alpha_composite(com2, hair)
+    com4 = Image.alpha_composite(com3, painting)
 
     #Convert to RGB
     rgb_im = com4.convert('RGB')
-#     display(rgb_im.resize((400,400), Image.NEAREST))
+    display(rgb_im.resize((1024,1024)))
 
-    file_name = str(trait["tokenId"]) + ".jpg"
+    file_name = str(trait["tokenId"]) + ".png"
     rgb_im.save("./output/" + file_name)
-    print(f'{str(trait["tokenId"])} done')
+    print(f'{str(trait["tokenId"])} done')  
 
 
 
@@ -74,13 +63,13 @@ for trait in traits:
 # ...
 # }
         
-with open("jsonlocation", 'r') as f:
-    hashes = json.load(f)
+# with open("jsonlocation", 'r') as f:
+#     hashes = json.load(f)
     
-for k,v in hashes.items():
-    print(k,v)
-    traits[v]["imageIPFS"] = k
+# for k,v in hashes.items():
+#     print(k,v)
+#     traits[v]["imageIPFS"] = k
 
 
-with open('traitsfinal.json', 'w') as outfile:
-json.dump(traits, outfile, indent=4)
+# with open('traitsfinal.json', 'w') as outfile:
+# json.dump(traits, outfile, indent=4)
