@@ -11,14 +11,14 @@ backgroundweights = [100]
 skinphototype = ["Jack"]
 skinphototypeweights = [100]
 
-faceaccessory = ["Guy Folkes", "Sunglasses"]
-faceaccessoryweights = [50, 50]
+faceaccessory = ["None", "Guy Folkes", "Sunglasses"]
+faceaccessoryweights = [20, 40, 40]
 
-hair = ["Short", "Very Short"]
-hairweights = [50, 50]
+hair = ["None", "Short", "Very Short"]
+hairweights = [30, 30, 40]
 
-painting = ["Java", "Javascript"]
-paintingweights = [50, 50]
+painting = ["None", "Java", "Javascript"]
+paintingweights = [30, 30, 40]
 
 # The weights sum must equal 100
 print(sum(backgroundweights))
@@ -27,7 +27,7 @@ print(sum(faceaccessoryweights))
 print(sum(hairweights))
 print(sum(paintingweights))
 
-TOTAL_DEVELOPERS = 8
+TOTAL_DEVELOPERS = 27
 
 traits = []
 

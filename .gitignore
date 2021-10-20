@@ -1,0 +1,4 @@
+output/*
+traits.json
+contract/node_modules/
+contract/build/

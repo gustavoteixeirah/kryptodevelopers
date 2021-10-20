@@ -4,6 +4,8 @@ import json
 import os
 path = os. getcwd()
 print(path)
+
+
 # READ METADATA
 with open("./traits.json", 'r') as f:
         traits = json.load(f)
