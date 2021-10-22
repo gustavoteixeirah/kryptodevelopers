@@ -16,7 +16,7 @@ const kryptoDeveloperApi = async (req, res) => {
 			image: `https://gateway.pinata.cloud/ipfs/${trait["imageIPFS"]}`,
 			external_url: "https://www.boringbananas.co",
 			attributes: [
-				{
+				{ 
 					trait_type: "Background",
 					value: trait["Background"],
 				},
