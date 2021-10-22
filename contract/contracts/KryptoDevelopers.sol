@@ -7,6 +7,7 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 contract KryptoDevelopers is ERC721, ERC721Enumerable {
     string[] public developers;
     mapping(string => bool) _developerExists;
+    string baseURI = "https://kryptodevelopers.vercel.app/api/";
 
     constructor() ERC721("KryptoDevelopers", "KDEV") {}
 
@@ -29,8 +30,16 @@ contract KryptoDevelopers is ERC721, ERC721Enumerable {
 
     function mint(string memory _developer) public {
         developers.push(_developer);
-        uint256 _id = developers.length;
+        uint256 _id = developers.length - 1;
         _mint(msg.sender, _id);
         _developerExists[_developer] = true;
+    }
+
+    function _baseURI() internal view override returns (string memory) {
+        return baseURI;
+    }
+
+    function setBaseURI(string memory _baseURI) public {
+        baseURI = _baseURI;
     }
 }
