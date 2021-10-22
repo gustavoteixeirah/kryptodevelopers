@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "next start"
   },
   "dependencies": {
     "@metamask/detect-provider": "^1.2.0",
@@ -16,7 +15,5 @@
     "web3": "^1.6.0"
   },
   "devDependencies": {
-    "eslint": "^8.0.1",
-    "eslint-config-next": "11.1.2"
   }
 }

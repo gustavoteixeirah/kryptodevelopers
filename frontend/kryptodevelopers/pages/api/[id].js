@@ -1,15 +1,12 @@
 import traits from "./traits.json";
 
-
 const kryptoDeveloperApi = async (req, res) => {
-
 	const totalSupply = 10000;
 
 	const query = req.query.id;
 
 	if (parseInt(query) < totalSupply) {
-	37,883,1327,1781,2528,2763,3833,5568,5858,6585,6812,7154,8412]
-		  const trait = traits[parseInt(query)]
+		const trait = traits[parseInt(query)];
 		// cons OPENSEA METADATA STANDARD DOCUMENTATION https://docs.opensea.io/docs/metadata-standards
 		let metadata = {};
 		metadata = {
@@ -44,14 +41,12 @@ const kryptoDeveloperApi = async (req, res) => {
 
 		// console.log(metadata)
 
-
 		res.statusCode = 200;
 		res.json(metadata);
 	} else {
 		res.statuscode = 404;
 		res.json({ error: "The developer you requested is out of range" });
 	}
-
 };
 
 export default kryptoDeveloperApi;
