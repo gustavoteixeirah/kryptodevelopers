@@ -16,7 +16,7 @@
     "web3": "^1.6.0"
   },
   "devDependencies": {
-    "eslint": "8.0.1",
+    "eslint": "^8.0.1",
     "eslint-config-next": "11.1.2"
   }
 }

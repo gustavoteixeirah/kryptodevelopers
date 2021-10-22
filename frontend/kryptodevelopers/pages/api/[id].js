@@ -8,7 +8,7 @@
 // import Web3 from "web3";
 
 // // import the json containing all metadata. not recommended, try to fetch the database from a middleware if possible, I use MONGODB for example
-import traits from "../../database/traits.json";
+import traits from "./traits.json";
 
 // const infuraAddress = INFURA_ADDRESS
 
@@ -75,20 +75,20 @@ const kryptoDeveloperApi = async (req, res) => {
 					value: trait["Background"],
 				},
 				{
-					trait_type: "Banana Base",
-					value: trait["Banana Base"],
+					trait_type: "Developer",
+					value: trait["Developer"],
 				},
 				{
-					trait_type: "Mouth",
-					value: trait["Mouth"],
+					trait_type: "Accessory",
+					value: trait["Accessory"],
 				},
 				{
-					trait_type: "Eyes",
-					value: trait["Eyes"],
+					trait_type: "Hair",
+					value: trait["Hair"],
 				},
 				{
-					trait_type: "Head Gear",
-					value: trait["Head Gear"],
+					trait_type: "Painting",
+					value: trait["Painting"],
 				},
 			],
 		};
