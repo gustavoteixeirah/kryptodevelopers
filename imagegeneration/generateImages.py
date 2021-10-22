@@ -2,7 +2,8 @@ from PIL import Image, ImageOps
 from IPython.display import display
 import json
 import os
-path = os. getcwd()
+
+path = os.getcwd()
 print(path)
 
 
