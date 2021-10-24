@@ -16,6 +16,8 @@ contract KryptoDevelopers is ERC721, ERC721Enumerable, Ownable {
 
     bool public saleIsActive = false;
 
+    bool public mergeIsActive = false;
+
     uint256 public constant MAX_MINT_QUANTITY = 25;
 
     uint256 public constant MAX_DEVELOPERS = 27;
@@ -87,7 +89,8 @@ contract KryptoDevelopers is ERC721, ERC721Enumerable, Ownable {
         return string(abi.encodePacked(base, tokenId.toString()));
     }
 
-    // function mergeNFT() {
 
-    // }
+    function mergeNFT(uint256 firstTokenId, uint256 secondTokenId) public {
+        
+    }
 }
