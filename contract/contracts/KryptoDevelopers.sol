@@ -22,7 +22,7 @@ contract KryptoDevelopers is ERC721, ERC721Enumerable, Ownable {
 
     uint256 public constant MAX_DEVELOPERS = 27;
 
-    uint256 public constant DEVELOPER_PRICE = 25000000000000000; // 0.025 ETH
+    uint256 public constant developerPrice = 25000000000000000; // 0.025 ETH
 
     constructor() ERC721("KryptoDevelopers", "KDEV") {}
 
@@ -58,7 +58,7 @@ contract KryptoDevelopers is ERC721, ERC721Enumerable, Ownable {
             "Purchase would exceed max supply of Developers"
         );
         require(
-            msg.value >= DEVELOPER_PRICE.mul(quantity),
+            msg.value >= developerPrice.mul(quantity),
             "Ether value sent is not correct"
         );
 

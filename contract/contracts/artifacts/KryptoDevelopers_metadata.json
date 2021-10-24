@@ -106,19 +106,6 @@
 			},
 			{
 				"inputs": [],
-				"name": "DEVELOPER_PRICE",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
 				"name": "MAX_DEVELOPERS",
 				"outputs": [
 					{
@@ -182,6 +169,19 @@
 			},
 			{
 				"inputs": [],
+				"name": "developerPrice",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "flipSaleState",
 				"outputs": [],
 				"stateMutability": "nonpayable",
@@ -228,6 +228,37 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "mergeIsActive",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "firstTokenId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "secondTokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "mergeNFT",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -721,11 +752,11 @@
 			]
 		},
 		"contracts/KryptoDevelopers.sol": {
-			"keccak256": "0xbb74fbef0793ed68c9af05330993147a95d160e010cf19b733e7e3f1ad089b93",
+			"keccak256": "0x9ca79eab806106bd7f4d7b1e39a3f6f0eedf5bf6f8e05d963904959573c5f49c",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://c8e6f93a76d1ed9d2cd824983a21f4d69e2bb05f82150c1b0f9b0e8254547604",
-				"dweb:/ipfs/QmSofKWkFZ1aaMP6nEzR9zQfKxkYvgBhXeNHPUQd9dJwgp"
+				"bzz-raw://0ad777c3dd4056951bc9ebcbac59ef6bece8876c64eb6cd826e10e7248ad6ef1",
+				"dweb:/ipfs/QmQfyxnQeWWvDgaC2czpcYu6Hw3taM5jFRZjGJcusbWhHp"
 			]
 		}
 	},
