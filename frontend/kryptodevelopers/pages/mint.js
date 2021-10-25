@@ -83,7 +83,7 @@ export default function Mint() {
 						.call();
 					console.log("ownedToken", ownedToken);
 					// setOwnedTokens([...ownedTokens, ownedToken]);
-					setOwnedTokens(arr => [...arr, ownedToken]);
+					setOwnedTokens((arr) => [...arr, ownedToken]);
 				}
 			}
 		} else {

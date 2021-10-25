@@ -16,22 +16,22 @@ for trait in traits:
     print(trait)
     background = Image.open(f'{path}/images/background/{trait["Background"]}.png').convert('RGBA')
     developer = Image.open(f'{path}/images/developer/{trait["Developer"]}.png').convert('RGBA')
-    accessory = Image.open(f'{path}/images/accessory/{trait["Accessory"]}.png').convert('RGBA')
     hair = Image.open(f'{path}/images/hair/{trait["Hair"]}.png').convert('RGBA')
+    accessory = Image.open(f'{path}/images/accessory/{trait["Accessory"]}.png').convert('RGBA')
     painting = Image.open(f'{path}/images/painting/{trait["Painting"]}.png').convert('RGBA')
 
     #Create each composite
-    com1 = Image.alpha_composite(background, developer)
-    com2 = Image.alpha_composite(com1, accessory)
+    com1 = Image.alpha_composite(background, painting)
+    com2 = Image.alpha_composite(com1, developer)
     com3 = Image.alpha_composite(com2, hair)
-    com4 = Image.alpha_composite(com3, painting)
+    com4 = Image.alpha_composite(com3, accessory)
 
     #Convert to RGB
     rgb_im = com4.convert('RGB')
-    display(rgb_im.resize((1024,1024)))
+    resizedImage = rgb_im.resize((512,512), Image.NEAREST)
 
     file_name = str(trait["tokenId"]) + ".png"
-    rgb_im.save("./output/" + file_name)
+    resizedImage.save("./output/" + file_name)
     print(f'{str(trait["tokenId"])} done')  
 
 

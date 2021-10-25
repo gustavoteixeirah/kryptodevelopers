@@ -11,14 +11,14 @@ backgroundweights = [100]
 skinphototype = ["Jack"]
 skinphototypeweights = [100]
 
-faceaccessory = ["None", "Guy Folkes", "Sunglasses"]
-faceaccessoryweights = [20, 40, 40]
+faceaccessory = ["None", "Guy Folkes", "Sunglasses", "Jason", "Juliete", "Milos", "Eyeglasses", "Earring", "Eye Patch"]
+faceaccessoryweights = [10, 2, 5, 9, 15, 15, 28, 1, 15]
 
-hair = ["None", "Short", "Very Short"]
-hairweights = [30, 30, 40]
+hair = ["None", "Dr Dree", "Goku", "Long", "Moicano",  "Nerd", "Nerd Medium", "Short", "Very Short"]
+hairweights = [10, 2, 5, 9, 15, 15, 28, 1, 15]
 
-painting = ["None", "Java", "Javascript"]
-paintingweights = [30, 30, 40]
+painting = ["None", "Java", "Javascript", "Go", "Python", "Ruby", "Solidity", "CSharp"]
+paintingweights = [5, 17, 10, 9, 15, 15, 28, 1]
 
 # The weights sum must equal 100
 print(sum(backgroundweights))
@@ -27,7 +27,7 @@ print(sum(faceaccessoryweights))
 print(sum(hairweights))
 print(sum(paintingweights))
 
-TOTAL_DEVELOPERS = 27
+TOTAL_DEVELOPERS = 256
 
 traits = []
 
@@ -53,6 +53,7 @@ def createCombo():
 for i in range(TOTAL_DEVELOPERS):
     newtraitcombo = createCombo()
     traits.append(newtraitcombo)
+    print(i)
 
 
 # ARE ALL DEVELOPERS  UNIQUE? I DUNNO KNOW HOW THIS WORKS BUT IT WORKS
