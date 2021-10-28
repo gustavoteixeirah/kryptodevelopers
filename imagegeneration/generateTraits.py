@@ -20,14 +20,18 @@ hairweights = [10, 2, 5, 9, 15, 15, 28, 1, 15]
 painting = ["None", "Java", "Javascript", "Go", "Python", "Ruby", "Solidity", "CSharp"]
 paintingweights = [5, 17, 10, 9, 15, 15, 28, 1]
 
+beverages = ["None", "Coffee", "Soda", "Juice", "Energetic", "Protein Shake", "Tea", "Water Bottle"]
+beveragesweights = [10, 40, 13, 5, 15, 5, 2, 10]
+
 # The weights sum must equal 100
 print(sum(backgroundweights))
 print(sum(skinphototypeweights))
 print(sum(faceaccessoryweights))
 print(sum(hairweights))
 print(sum(paintingweights))
+print(sum(beveragesweights))
 
-TOTAL_DEVELOPERS = 256
+TOTAL_DEVELOPERS = 720
 
 traits = []
 
@@ -43,6 +47,7 @@ def createCombo():
         faceaccessory, faceaccessoryweights)[0]
     trait["Hair"] = random.choices(hair, hairweights)[0]
     trait["Painting"] = random.choices(painting, paintingweights)[0]
+    trait["Beverage"] = random.choices(beverages, beveragesweights)[0]
 
     if trait in traits:
         return createCombo()
@@ -94,6 +99,10 @@ paintingcounts = {}
 for item in painting:
     paintingcounts[item] = 0
 
+beveragescounts = {}
+for item in beverages:
+    beveragescounts[item] = 0
+
 # oneofonecounts = 0
 
 # signatures = [137,883,1327,1781,2528,2763,3833,5568,5858,6585,6812,7154,8412]
@@ -104,12 +113,14 @@ for developer in traits:
     faceaccessorycounts[developer["Accessory"]] += 1
     haircounts[developer["Hair"]] += 1
     paintingcounts[developer["Painting"]] += 1
+    beveragescounts[developer["Beverage"]] += 1
 
 print("Background:", backgroundcounts)
 print("Developer:", skinphototypecounts)
 print("Accessory:", faceaccessorycounts)
 print("Hair:", haircounts)
 print("Painting:", haircounts)
+print("Beverage:", beveragescounts)
 
 
 with open('traits.json', 'w') as outfile:

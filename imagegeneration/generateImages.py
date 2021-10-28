@@ -16,18 +16,23 @@ for trait in traits:
     print(trait)
     background = Image.open(f'{path}/images/background/{trait["Background"]}.png').convert('RGBA')
     developer = Image.open(f'{path}/images/developer/{trait["Developer"]}.png').convert('RGBA')
-    hair = Image.open(f'{path}/images/hair/{trait["Hair"]}.png').convert('RGBA')
+    if (trait["Accessory"] == "Milos"):
+        hair = Image.open(f'{path}/images/hair/None.png').convert('RGBA')
+    else:
+        hair = Image.open(f'{path}/images/hair/{trait["Hair"]}.png').convert('RGBA')
     accessory = Image.open(f'{path}/images/accessory/{trait["Accessory"]}.png').convert('RGBA')
     painting = Image.open(f'{path}/images/painting/{trait["Painting"]}.png').convert('RGBA')
+    beverage = Image.open(f'{path}/images/beverage/{trait["Beverage"]}.png').convert('RGBA')
 
     #Create each composite
     com1 = Image.alpha_composite(background, painting)
     com2 = Image.alpha_composite(com1, developer)
     com3 = Image.alpha_composite(com2, hair)
     com4 = Image.alpha_composite(com3, accessory)
+    com5 = Image.alpha_composite(com4, beverage)
 
     #Convert to RGB
-    rgb_im = com4.convert('RGB')
+    rgb_im = com5.convert('RGB')
     resizedImage = rgb_im.resize((512,512), Image.NEAREST)
 
     file_name = str(trait["tokenId"]) + ".png"
