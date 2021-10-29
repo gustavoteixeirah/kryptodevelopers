@@ -3,13 +3,13 @@ import random
 
 # backgrounds = ["Dark Room", "Light Room", "Office", "Tower View", "Beach", "Bedroom"]
 # backgroundweights = [15, 10, 20, 5, 2, 48]
-backgrounds = ["The Office"]
-backgroundweights = [100]
+backgrounds = ["The Office", "Beach"]
+backgroundweights = [50, 50]
 
 # Fitzpatrick skin phototype
 # https://dermnetnz.org/topics/skin-phototype
-skinphototype = ["Jack"]
-skinphototypeweights = [100]
+skinphototype = ["Jack","Rose"]
+skinphototypeweights = [50, 50]
 
 faceaccessory = ["None", "Guy Folkes", "Sunglasses", "Jason", "Juliete", "Milos", "Eyeglasses", "Earring", "Eye Patch"]
 faceaccessoryweights = [10, 2, 5, 9, 15, 15, 28, 1, 15]
