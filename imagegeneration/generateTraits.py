@@ -3,8 +3,8 @@ import random
 
 # backgrounds = ["Dark Room", "Light Room", "Office", "Tower View", "Beach", "Bedroom"]
 # backgroundweights = [15, 10, 20, 5, 2, 48]
-backgrounds = ["The Office", "Beach"]
-backgroundweights = [50, 50]
+backgrounds = ["The Office", "Beach", "Dark"]
+backgroundweights = [5, 5, 90]
 
 # Fitzpatrick skin phototype
 # https://dermnetnz.org/topics/skin-phototype
@@ -12,7 +12,7 @@ skinphototype = ["Jack","Rose"]
 skinphototypeweights = [50, 50]
 
 faceaccessory = ["None", "Guy Folkes", "Sunglasses", "Jason", "Juliete", "Milos", "Eyeglasses", "Earring", "Eye Patch"]
-faceaccessoryweights = [10, 2, 5, 9, 15, 15, 28, 1, 15]
+faceaccessoryweights = [11.5, 2, 15, 3, 15, 10, 28, 0.5, 15]
 
 hair = ["None", "Dr Dree", "Goku", "Long", "Moicano",  "Nerd", "Nerd Medium", "Short", "Very Short"]
 hairweights = [10, 2, 5, 9, 15, 15, 28, 1, 15]
@@ -21,7 +21,7 @@ femalehair = ["None", "Channel", "Long", "Ponytail", "Ponytail2",  "Short", "Van
 femalehairweights = [10, 2, 5, 9, 15, 15, 28, 16]
 
 painting = ["None", "Java", "Javascript", "Go", "Python", "Ruby", "Solidity", "CSharp"]
-paintingweights = [5, 17, 10, 9, 15, 15, 28, 1]
+paintingweights = [5, 17, 20, 9, 15, 15, 8, 11]
 
 beverages = ["None", "Coffee", "Soda", "Juice", "Energetic", "Protein Shake", "Tea", "Water Bottle"]
 beveragesweights = [10, 40, 13, 5, 15, 5, 2, 10]
@@ -34,7 +34,7 @@ print(sum(hairweights))
 print(sum(paintingweights))
 print(sum(beveragesweights))
 
-TOTAL_DEVELOPERS = 1024
+TOTAL_DEVELOPERS = 720
 
 traits = []
 
@@ -53,7 +53,6 @@ def createCombo():
         trait["Hair"] = random.choices(hair, hairweights)[0]
     else:
         trait["Hair"] = random.choices(femalehair, femalehairweights)[0]
-    print(trait["Developer"], trait["Hair"])
 
     trait["Painting"] = random.choices(painting, paintingweights)[0]
     trait["Beverage"] = random.choices(beverages, beveragesweights)[0]
@@ -67,7 +66,7 @@ def createCombo():
 for i in range(TOTAL_DEVELOPERS):
     newtraitcombo = createCombo()
     traits.append(newtraitcombo)
-    # print(i)
+    print(i)
 
 
 # ARE ALL DEVELOPERS  UNIQUE? I DUNNO KNOW HOW THIS WORKS BUT IT WORKS
