@@ -17,6 +17,9 @@ faceaccessoryweights = [10, 2, 5, 9, 15, 15, 28, 1, 15]
 hair = ["None", "Dr Dree", "Goku", "Long", "Moicano",  "Nerd", "Nerd Medium", "Short", "Very Short"]
 hairweights = [10, 2, 5, 9, 15, 15, 28, 1, 15]
 
+femalehair = ["None", "Channel", "Long", "Ponytail", "Ponytail2",  "Short", "Vanda", "Vanda2"]
+femalehairweights = [10, 2, 5, 9, 15, 15, 28, 16]
+
 painting = ["None", "Java", "Javascript", "Go", "Python", "Ruby", "Solidity", "CSharp"]
 paintingweights = [5, 17, 10, 9, 15, 15, 28, 1]
 
@@ -31,7 +34,7 @@ print(sum(hairweights))
 print(sum(paintingweights))
 print(sum(beveragesweights))
 
-TOTAL_DEVELOPERS = 720
+TOTAL_DEVELOPERS = 1024
 
 traits = []
 
@@ -43,9 +46,15 @@ def createCombo():
     trait["Background"] = random.choices(backgrounds, backgroundweights)[0]
     trait["Developer"] = random.choices(
         skinphototype, skinphototypeweights)[0]
-    trait["Accessory"] = random.choices(
-        faceaccessory, faceaccessoryweights)[0]
-    trait["Hair"] = random.choices(hair, hairweights)[0]
+    trait["Accessory"] = random.choices(faceaccessory, faceaccessoryweights)[0]
+
+    # print(trait["Developer"])
+    if trait["Developer"] == "Jack":
+        trait["Hair"] = random.choices(hair, hairweights)[0]
+    else:
+        trait["Hair"] = random.choices(femalehair, femalehairweights)[0]
+    print(trait["Developer"], trait["Hair"])
+
     trait["Painting"] = random.choices(painting, paintingweights)[0]
     trait["Beverage"] = random.choices(beverages, beveragesweights)[0]
 
@@ -58,7 +67,7 @@ def createCombo():
 for i in range(TOTAL_DEVELOPERS):
     newtraitcombo = createCombo()
     traits.append(newtraitcombo)
-    print(i)
+    # print(i)
 
 
 # ARE ALL DEVELOPERS  UNIQUE? I DUNNO KNOW HOW THIS WORKS BUT IT WORKS
@@ -92,8 +101,9 @@ for item in faceaccessory:
     faceaccessorycounts[item] = 0
 
 haircounts = {}
-for item in hair:
+for item in hair + femalehair:
     haircounts[item] = 0
+
 
 paintingcounts = {}
 for item in painting:
@@ -115,12 +125,12 @@ for developer in traits:
     paintingcounts[developer["Painting"]] += 1
     beveragescounts[developer["Beverage"]] += 1
 
-print("Background:", backgroundcounts)
-print("Developer:", skinphototypecounts)
-print("Accessory:", faceaccessorycounts)
-print("Hair:", haircounts)
-print("Painting:", haircounts)
-print("Beverage:", beveragescounts)
+print(sum(backgroundcounts.values()), " -> Background:", backgroundcounts)
+print(sum(skinphototypecounts.values()), " -> Developer:", skinphototypecounts)
+print(sum(faceaccessorycounts.values()), " -> Accessory:", faceaccessorycounts)
+print(sum(haircounts.values()), " -> Hair:", haircounts)
+print(sum(haircounts.values()), " -> Painting:", haircounts)
+print(sum(beveragescounts.values()), " -> Beverage:", beveragescounts)
 
 
 with open('traits.json', 'w') as outfile:

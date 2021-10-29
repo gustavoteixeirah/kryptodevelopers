@@ -19,7 +19,10 @@ for trait in traits:
     if (trait["Accessory"] == "Milos"):
         hair = Image.open(f'{path}/images/hair_male/None.png').convert('RGBA')
     else:
-        hair = Image.open(f'{path}/images/hair_male/{trait["Hair"]}.png').convert('RGBA')
+        if (trait["Developer"] == "Jack"):
+            hair = Image.open(f'{path}/images/hair_male/{trait["Hair"]}.png').convert('RGBA')
+        else:
+            hair = Image.open(f'{path}/images/hair_female/{trait["Hair"]}.png').convert('RGBA')
     accessory = Image.open(f'{path}/images/accessory/{trait["Accessory"]}.png').convert('RGBA')
     painting = Image.open(f'{path}/images/painting/{trait["Painting"]}.png').convert('RGBA')
     beverage = Image.open(f'{path}/images/beverage/{trait["Beverage"]}.png').convert('RGBA')
