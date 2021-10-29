@@ -13,8 +13,9 @@ with open("./traits.json", 'r') as f:
         
 #### IMAGE GENERATION
 for trait in traits:
-    print(trait)
+
     background = Image.open(f'{path}/images/background/{trait["Background"]}.png').convert('RGBA')
+    
     developer = Image.open(f'{path}/images/developer/{trait["Developer"]}.png').convert('RGBA')
     if (trait["Accessory"] == "Milos"):
         hair = Image.open(f'{path}/images/hair_male/None.png').convert('RGBA')

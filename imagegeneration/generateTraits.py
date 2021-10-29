@@ -8,8 +8,8 @@ backgroundweights = [5, 5, 90]
 
 # Fitzpatrick skin phototype
 # https://dermnetnz.org/topics/skin-phototype
-skinphototype = ["Jack","Rose"]
-skinphototypeweights = [50, 50]
+skinphototype = ["Jack","Rose", "Jack dark"]
+skinphototypeweights = [5, 5, 90]
 
 faceaccessory = ["None", "Guy Folkes", "Sunglasses", "Jason", "Juliete", "Milos", "Eyeglasses", "Earring", "Eye Patch"]
 faceaccessoryweights = [11.5, 2, 15, 3, 15, 10, 28, 0.5, 15]
@@ -34,7 +34,7 @@ print(sum(hairweights))
 print(sum(paintingweights))
 print(sum(beveragesweights))
 
-TOTAL_DEVELOPERS = 720
+TOTAL_DEVELOPERS = 360
 
 traits = []
 
@@ -44,8 +44,8 @@ def createCombo():
     trait = {}
 
     trait["Background"] = random.choices(backgrounds, backgroundweights)[0]
-    trait["Developer"] = random.choices(
-        skinphototype, skinphototypeweights)[0]
+    trait["Developer"] = random.choices(skinphototype, skinphototypeweights)[0]
+
     trait["Accessory"] = random.choices(faceaccessory, faceaccessoryweights)[0]
 
     # print(trait["Developer"])
