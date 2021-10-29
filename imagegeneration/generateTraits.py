@@ -3,27 +3,32 @@ import random
 
 # backgrounds = ["Dark Room", "Light Room", "Office", "Tower View", "Beach", "Bedroom"]
 # backgroundweights = [15, 10, 20, 5, 2, 48]
-backgrounds = ["The Office", "Beach", "Dark"]
-backgroundweights = [5, 5, 90]
+backgrounds = ["The Office", "Beach", "Dark", "Tower"]
+backgroundweights = [3, 2, 5, 90]
 
 # Fitzpatrick skin phototype
 # https://dermnetnz.org/topics/skin-phototype
-skinphototype = ["Jack","Rose", "Jack dark"]
-skinphototypeweights = [5, 5, 90]
+skinphototype = ["Jack", "Rose"]
+skinphototypeweights = [50, 50]
 
-faceaccessory = ["None", "Guy Folkes", "Sunglasses", "Jason", "Juliete", "Milos", "Eyeglasses", "Earring", "Eye Patch"]
+faceaccessory = ["None", "Guy Folkes", "Sunglasses", "Jason",
+                 "Juliete", "Milos", "Eyeglasses", "Earring", "Eye Patch"]
 faceaccessoryweights = [11.5, 2, 15, 3, 15, 10, 28, 0.5, 15]
 
-hair = ["None", "Dr Dree", "Goku", "Long", "Moicano",  "Nerd", "Nerd Medium", "Short", "Very Short"]
+hair = ["None", "Dr Dree", "Goku", "Long", "Moicano",
+        "Nerd", "Nerd Medium", "Short", "Very Short"]
 hairweights = [10, 2, 5, 9, 15, 15, 28, 1, 15]
 
-femalehair = ["None", "Channel", "Long", "Ponytail", "Ponytail2",  "Short", "Vanda", "Vanda2"]
+femalehair = ["None", "Channel", "Long", "Ponytail",
+              "Ponytail2",  "Short", "Vanda", "Vanda2"]
 femalehairweights = [10, 2, 5, 9, 15, 15, 28, 16]
 
-painting = ["None", "Java", "Javascript", "Go", "Python", "Ruby", "Solidity", "CSharp"]
+painting = ["None", "Java", "Javascript", "Go",
+            "Python", "Ruby", "Solidity", "CSharp"]
 paintingweights = [5, 17, 20, 9, 15, 15, 8, 11]
 
-beverages = ["None", "Coffee", "Soda", "Juice", "Energetic", "Protein Shake", "Tea", "Water Bottle"]
+beverages = ["None", "Coffee", "Soda", "Juice",
+             "Energetic", "Protein Shake", "Tea", "Water Bottle"]
 beveragesweights = [10, 40, 13, 5, 15, 5, 2, 10]
 
 # The weights sum must equal 100
