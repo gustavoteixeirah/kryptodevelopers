@@ -4,7 +4,7 @@ import random
 # backgrounds = ["Dark Room", "Light Room", "Office", "Tower View", "Beach", "Bedroom"]
 # backgroundweights = [15, 10, 20, 5, 2, 48]
 backgrounds = ["The Office", "Beach", "Dark", "Tower"]
-backgroundweights = [3, 2, 5, 90]
+backgroundweights = [25, 25, 25, 25]
 
 # Fitzpatrick skin phototype
 # https://dermnetnz.org/topics/skin-phototype
@@ -39,7 +39,7 @@ print(sum(hairweights))
 print(sum(paintingweights))
 print(sum(beveragesweights))
 
-TOTAL_DEVELOPERS = 360
+TOTAL_DEVELOPERS = 20
 
 traits = []
 

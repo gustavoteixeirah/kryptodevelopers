@@ -6,6 +6,7 @@ import kryptoDevelopers from "./KryptoDevelopers.json";
 const CONTRACT_ADDRESS = "0xb72296B78aBfc7f3BB156DEd531eA82B4f3F035E";
 
 export default function Mint() {
+	console.log("renderizando...")
 	// FOR WALLET
 	const [signedIn, setSignedIn] = useState(false);
 
@@ -22,6 +23,8 @@ export default function Mint() {
 	const [developerPrice, setDeveloperPrice] = useState(0);
 
 	const [ownedTokens, setOwnedTokens] = useState([]);
+
+	const [tokensLinks, setTokensLinks] = useState([]);
 
 	const [balance, setBalance] = useState(0);
 
@@ -71,18 +74,19 @@ export default function Mint() {
 			const balance = await contract.methods
 				.balanceOf(accounts[0])
 				.call();
-			console.log(balance);
+			// console.log(balance);
 			if (balance != 0) {
-				console.log(balance);
+				// console.log(balance);
 				setBalance(balance);
 				for (var index = 0; index < balance; index++) {
-					console.log("index", index);
-					console.log("walletAddress", accounts[0]);
+					// console.log("index", index);
+					// console.log("walletAddress", accounts[0]);
 					const ownedToken = await contract.methods
 						.tokenOfOwnerByIndex(accounts[0], index)
 						.call();
-					console.log("ownedToken", ownedToken);
+					// console.log("ownedToken", ownedToken);
 					// setOwnedTokens([...ownedTokens, ownedToken]);
+					await setTokensURLs(ownedToken);
 					setOwnedTokens((arr) => [...arr, ownedToken]);
 				}
 			}
@@ -92,6 +96,15 @@ export default function Mint() {
 		setSignedIn(true);
 	}
 
+	async function setTokensURLs(token) {
+		const url = "http://localhost:3000/api/" + token;
+
+		fetch(url).then(async (T) => {
+			const json = await T.json();
+			setTokensLinks((arr) => [...arr, json.image]);
+		});
+	}
+
 	async function mintDeveloper(quantity) {
 		if (contract) {
 			const price = Number(developerPrice) * quantity;
@@ -99,9 +112,9 @@ export default function Mint() {
 			const gasAmount = await contract.methods
 				.mint(quantity)
 				.estimateGas({ from: walletAddress, value: price });
-			console.log("estimated gas", gasAmount);
+			// console.log("estimated gas", gasAmount);
 
-			console.log({ from: walletAddress, value: price });
+			// console.log({ from: walletAddress, value: price });
 
 			contract.methods
 				.mint(quantity)
@@ -111,10 +124,10 @@ export default function Mint() {
 					gas: String(gasAmount),
 				})
 				.on("transactionHash", function (hash) {
-					console.log("transactionHash", hash);
+					// console.log("transactionHash", hash);
 				});
 		} else {
-			console.log("Wallet not connected");
+			// console.log("Wallet not connected");
 		}
 	}
 
@@ -176,8 +189,17 @@ export default function Mint() {
 					</span>
 					{balance != 0 ? (
 						<ul>
-							{ownedTokens.map((value, index) => {
-								return <li key={index}>tokenId: {value}</li>;
+							{tokensLinks.map((value, index) => {
+								return (
+									<li key={index}>
+										<img
+											src={value}
+											alt="KryptoDeveloper"
+											width="128"
+											height="128"
+										/>
+									</li>
+								);
 							})}
 						</ul>
 					) : (

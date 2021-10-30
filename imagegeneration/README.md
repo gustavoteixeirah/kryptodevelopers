@@ -4,3 +4,6 @@ generate the hashes:
 ipfs add -r .
 ```
 
+(added )+(\w+)+( output/)+(\w)+(.png)
+
+"$2": "$4",
