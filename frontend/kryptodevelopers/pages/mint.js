@@ -1,4 +1,3 @@
-import detectEthereumProvider from "@metamask/detect-provider";
 import { useEffect, useState } from "react";
 import Web3 from "web3";
 import kryptoDevelopers from "./KryptoDevelopers.json";
@@ -29,9 +28,9 @@ export default function Mint() {
 
 	const [balance, setBalance] = useState(0);
 
-	// useEffect(async () => {
-	// 	signIn();
-	// }, []);
+	useEffect(async () => {
+		signIn();
+	}, []);
 
 	async function signIn() {
 		if (typeof window.web3 !== "undefined") {
@@ -67,7 +66,6 @@ export default function Mint() {
 				// Handle error. Likely the user rejected the login
 				console.error(error);
 			});
-		
 	}
 
 	async function loadBlockchainData() {
@@ -123,10 +121,20 @@ export default function Mint() {
 	}
 
 	async function setTokensURLs(token) {
-		const url = "https://kryptodevelopers.vercel.app/api/" + token;
+		var myHeaders = new Headers();
 
-		fetch(url).then(async (T) => {
+		var myInit = {
+			method: "GET",
+			headers: myHeaders,
+			mode: "no-cors",
+			cache: "default",
+		};
+		const url = "https://kryptodevelopers.vercel.app/api/" + token;
+		// const url = "http://localhost:3000/api/" + token;
+
+		fetch(url, myInit).then(async (T) => {
 			const json = await T.json();
+			console.log(json);
 			setTokensLinks((arr) => [...arr, json.image]);
 		});
 	}
@@ -167,7 +175,9 @@ export default function Mint() {
 			<div className="mintInfo">
 				<div>
 					Wallet status: {signedIn ? "Connected" : "Disconnected"}
-					<button onClick={signedIn ? signOut : signIn}>{!signedIn ? "CONNECT WALLET" : "DISCONNECT WALLET"}</button>
+					<button onClick={signedIn ? signOut : signIn}>
+						{!signedIn ? "CONNECT WALLET" : "DISCONNECT WALLET"}
+					</button>
 				</div>
 				<div>Total Supply: {totalSupply} </div>
 				<div>
