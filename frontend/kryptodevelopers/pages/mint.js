@@ -56,7 +56,7 @@ export default function Mint() {
 		// const networkData = kryptoDevelopers.networks[networkId];
 		if (networkId) {
 			const abi = kryptoDevelopers.abi;
-			console.log(CONTRACT_ADDRESS);
+			console.log("Contrato: ",CONTRACT_ADDRESS);
 			const contract = new web3.eth.Contract(abi, CONTRACT_ADDRESS);
 			setContract(contract);
 
@@ -73,6 +73,7 @@ export default function Mint() {
 
 			const accounts = await web3.eth.getAccounts();
 			setWalletAddress(accounts[0]);
+			console.log("Conta conectada: ",accounts[0]);
 
 			const balance = await contract.methods
 				.balanceOf(accounts[0])
@@ -100,7 +101,7 @@ export default function Mint() {
 	}
 
 	async function setTokensURLs(token) {
-		const url = "http://localhost:3000/api/" + token;
+		const url = "https://kryptodevelopers.vercel.app/api/" + token;
 
 		fetch(url).then(async (T) => {
 			const json = await T.json();
