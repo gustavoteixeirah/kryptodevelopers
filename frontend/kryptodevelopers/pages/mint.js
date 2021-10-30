@@ -29,15 +29,14 @@ export default function Mint() {
 
 	const [balance, setBalance] = useState(0);
 
-	useEffect(async () => {
-		loadWeb3();
-	}, []);
+	// useEffect(async () => {
+	// 	signIn();
+	// }, []);
 
-	async function loadWeb3() {
-		const provider = await detectEthereumProvider();
-
-		if (provider) {
-			window.web3 = new Web3(provider);
+	async function signIn() {
+		if (typeof window.web3 !== "undefined") {
+			// Use existing gateway
+			window.web3 = new Web3(window.ethereum);
 			console.log("Ethereum wallet connected!");
 		} else {
 			console.log("Ethereum wallet not connected...");
@@ -45,18 +44,41 @@ export default function Mint() {
 				"No Ethereum interface injected into browser. Read-only access"
 			);
 		}
-		loadBlockchainData();
+		window.ethereum
+			.enable()
+			.then(function (accounts) {
+				window.web3.eth.net
+					.getNetworkType()
+					// checks if connected network is mainnet (change this to rinkeby if you wanna test on testnet)
+					.then((network) => {
+						console.log(network);
+						if (network != "ropsten") {
+							alert(
+								"You are on " +
+									network +
+									" network. Change network to mainnet or you won't be able to do anything here"
+							);
+						}
+					});
+				// let wallet = accounts[0];
+				loadBlockchainData();
+			})
+			.catch(function (error) {
+				// Handle error. Likely the user rejected the login
+				console.error(error);
+			});
+		
 	}
 
 	async function loadBlockchainData() {
 		const web3 = window.web3;
 		const networkId = await web3.eth.net.getId();
-		console.log("networkId->",networkId);
+		console.log("networkId->", networkId);
 		// console.log(kryptoDevelopers);
 		// const networkData = kryptoDevelopers.networks[networkId];
 		if (networkId) {
 			const abi = kryptoDevelopers.abi;
-			console.log("Contrato: ",CONTRACT_ADDRESS);
+			console.log("Contrato: ", CONTRACT_ADDRESS);
 			const contract = new web3.eth.Contract(abi, CONTRACT_ADDRESS);
 			setContract(contract);
 
@@ -73,7 +95,7 @@ export default function Mint() {
 
 			const accounts = await web3.eth.getAccounts();
 			setWalletAddress(accounts[0]);
-			console.log("Conta conectada: ",accounts[0]);
+			console.log("Conta conectada: ", accounts[0]);
 
 			const balance = await contract.methods
 				.balanceOf(accounts[0])
@@ -134,7 +156,9 @@ export default function Mint() {
 			// console.log("Wallet not connected");
 		}
 	}
-
+	async function signOut() {
+		setSignedIn(false);
+	}
 	return (
 		<div>
 			<div className="title">
@@ -143,6 +167,7 @@ export default function Mint() {
 			<div className="mintInfo">
 				<div>
 					Wallet status: {signedIn ? "Connected" : "Disconnected"}
+					<button onClick={signedIn ? signOut : signIn}>{!signedIn ? "CONNECT WALLET" : "DISCONNECT WALLET"}</button>
 				</div>
 				<div>Total Supply: {totalSupply} </div>
 				<div>
