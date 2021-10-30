@@ -3,10 +3,11 @@ import { useEffect, useState } from "react";
 import Web3 from "web3";
 import kryptoDevelopers from "./KryptoDevelopers.json";
 
-const CONTRACT_ADDRESS = "0xb72296B78aBfc7f3BB156DEd531eA82B4f3F035E";
+// const CONTRACT_ADDRESS = "0xb72296B78aBfc7f3BB156DEd531eA82B4f3F035E";
+const CONTRACT_ADDRESS = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS;
 
 export default function Mint() {
-	console.log("renderizando...")
+	console.log("renderizando...");
 	// FOR WALLET
 	const [signedIn, setSignedIn] = useState(false);
 
@@ -50,10 +51,12 @@ export default function Mint() {
 	async function loadBlockchainData() {
 		const web3 = window.web3;
 		const networkId = await web3.eth.net.getId();
-		const networkData = kryptoDevelopers.networks[networkId];
-		if (networkData) {
+		console.log("networkId->",networkId);
+		// console.log(kryptoDevelopers);
+		// const networkData = kryptoDevelopers.networks[networkId];
+		if (networkId) {
 			const abi = kryptoDevelopers.abi;
-
+			console.log(CONTRACT_ADDRESS);
 			const contract = new web3.eth.Contract(abi, CONTRACT_ADDRESS);
 			setContract(contract);
 
@@ -80,7 +83,7 @@ export default function Mint() {
 				setBalance(balance);
 				for (var index = 0; index < balance; index++) {
 					// console.log("index", index);
-					// console.log("walletAddress", accounts[0]);
+					console.log("walletAddress", accounts[0]);
 					const ownedToken = await contract.methods
 						.tokenOfOwnerByIndex(accounts[0], index)
 						.call();
