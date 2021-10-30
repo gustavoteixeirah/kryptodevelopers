@@ -1,7 +1,6 @@
 # Eat The Blocks NFT Project
 
 ![KryptoDeveloper 1](kryptodeveloper.png?raw=true "Title")
-![KryptoDeveloper 2](kryptodeveloper2.png?raw=true "Title")
 
 This is the repository of the source code for the NFT collection developed for the Eat The Blocks NFT Project
 It is structured in three main folders based on the deliverables of the project:
