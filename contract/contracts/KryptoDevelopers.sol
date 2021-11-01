@@ -2,11 +2,10 @@
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
-contract KryptoDevelopers is ERC721, ERC721Enumerable, Ownable {
+contract KryptoDevelopers is ERC721Enumerable, Ownable {
     using SafeMath for uint256;
     using Strings for uint256;
 
@@ -23,24 +22,20 @@ contract KryptoDevelopers is ERC721, ERC721Enumerable, Ownable {
     uint256 public constant MAX_DEVELOPERS = 27;
 
     uint256 public constant developerPrice = 25000000000000000; // 0.025 ETH
+    
+    // withdraw addresses
+    address t1 = 0xfc86A64a8DE22CF25410F7601AcBd8d6630Da93D;
+    address t2 = 0x4265de963cdd60629d03FEE2cd3285e6d5ff6015;
+    address t3 = 0x1b33EBa79c4DD7243E5a3456fc497b930Db054b2;
+    address t4 = 0x92d79ccaCE3FC606845f3A66c9AeD75d8e5487A9;
 
-    constructor() ERC721("KryptoDevelopers", "KDEV") {}
-
-    function _beforeTokenTransfer(
-        address from,
-        address to,
-        uint256 tokenId
-    ) internal override(ERC721, ERC721Enumerable) {
-        super._beforeTokenTransfer(from, to, tokenId);
-    }
-
-    function supportsInterface(bytes4 interfaceId)
-        public
-        view
-        override(ERC721, ERC721Enumerable)
-        returns (bool)
-    {
-        return super.supportsInterface(interfaceId);
+    // constructor() ERC721("KryptoDevelopers", "KDEV") {}
+    constructor(
+        string memory name_,
+        string memory symbol_,
+        string memory baseURI_
+    ) ERC721(name_, symbol_) {
+        _developersBaseURI = baseURI_;
     }
 
     function flipSaleState() public onlyOwner {
@@ -89,8 +84,37 @@ contract KryptoDevelopers is ERC721, ERC721Enumerable, Ownable {
         return string(abi.encodePacked(base, tokenId.toString()));
     }
 
-
-    function mergeNFT(uint256 firstTokenId, uint256 secondTokenId) public {
-        
+    function tokensOfOwner(address owner)
+        public
+        view
+        returns (uint256[] memory)
+    {
+        uint256 count = balanceOf(owner);
+        uint256[] memory ids = new uint256[](count);
+        for (uint256 i = 0; i < count; i++) {
+            ids[i] = tokenOfOwnerByIndex(owner, i);
+        }
+        return ids;
     }
+
+        function withdrawAll() public payable onlyOwner {
+        uint256 _each = address(this).balance / 4;
+        require(payable(t1).send(_each));
+        require(payable(t2).send(_each));
+        require(payable(t3).send(_each));
+        require(payable(t4).send(_each));
+    }
+
+//TODO AGEITAAR ESSA FUNCTION
+    function giveAway(address _to, uint256 _amount) external onlyOwner() {
+        require( _amount <= _reserved, "Exceeds reserved Cat supply" );
+
+        uint256 supply = totalSupply();
+        for(uint256 i; i < _amount; i++){
+            _safeMint( _to, supply + i );
+        }
+
+        _reserved -= _amount;
+    }
+
 }
