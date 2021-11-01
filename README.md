@@ -30,6 +30,10 @@ The website is the frontend used to:
 -   Mint new NFTs
 -   Merge NFTs
 
+#### Description
+
+Developers are the key people behind any software that has ever been built. Software programs for simple led switching to space programs. Simple arithmetic to complex calculus. This NFT collection seeks to illustrate these hard-working people that expends their days in front of a computer to solve problems. With different programming languages skills, offices, favorites drinks and so on...there are a plenty variety of developers NFTs to choose. Maybe you identify yourself with one of them?
+
 ### NFTS
 
 These are the images of the developers.

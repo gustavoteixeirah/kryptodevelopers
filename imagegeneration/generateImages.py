@@ -13,10 +13,13 @@ with open("./traits.json", 'r') as f:
         
 #### IMAGE GENERATION
 for trait in traits:
-
+    # BACKGROUND
     background = Image.open(f'{path}/images/background/{trait["Background"]}.png').convert('RGBA')
     
+    # DEVELOPER
     developer = Image.open(f'{path}/images/developer/{trait["Developer"]}.png').convert('RGBA')
+
+    # HAIR
     if (trait["Accessory"] == "Milos"):
         hair = Image.open(f'{path}/images/hair_male/None.png').convert('RGBA')
     else:
@@ -24,8 +27,21 @@ for trait in traits:
             hair = Image.open(f'{path}/images/hair_male/{trait["Hair"]}.png').convert('RGBA')
         else:
             hair = Image.open(f'{path}/images/hair_female/{trait["Hair"]}.png').convert('RGBA')
+
+    # ACCESSORY
     accessory = Image.open(f'{path}/images/accessory/{trait["Accessory"]}.png').convert('RGBA')
-    painting = Image.open(f'{path}/images/painting/{trait["Painting"]}.png').convert('RGBA')
+    
+    # PAINTING
+    if (trait["Background"] == "Company"):
+        painting = Image.open(f'{path}/images/Painting_Company/{trait["Painting"]}.png').convert('RGBA')
+    elif (trait["Background"] == "Kitchen"):
+        painting = Image.open(f'{path}/images/Painting_Kitchen/{trait["Painting"]}.png').convert('RGBA')
+    elif (trait["Background"] == "Tower"):
+        painting = Image.open(f'{path}/images/Painting_Tower/{trait["Painting"]}.png').convert('RGBA')
+    else:
+        painting = Image.open(f'{path}/images/painting/{trait["Painting"]}.png').convert('RGBA')
+    
+    # BEVERAGE
     beverage = Image.open(f'{path}/images/beverage/{trait["Beverage"]}.png').convert('RGBA')
 
     #Create each composite
