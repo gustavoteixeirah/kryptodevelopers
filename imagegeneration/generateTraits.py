@@ -8,8 +8,8 @@ backgroundweights = [35, 5, 18, 2, 30, 10]
 
 # Fitzpatrick skin phototype
 # https://dermnetnz.org/topics/skin-phototype
-skinphototype = ["Jack", "Rose"]
-skinphototypeweights = [50, 50]
+skinphototype = ["Jack", "Rose", "Alien"]
+skinphototypeweights = [5, 5, 90]
 
 faceaccessory = ["None", "Guy Folkes", "Sunglasses", "Jason",
                  "Juliete", "Milos", "Eyeglasses", "Earring", "Eye Patch"]
@@ -42,7 +42,6 @@ print(sum(beveragesweights))
 TOTAL_DEVELOPERS = 200
 
 traits = []
-
 
 def createCombo():
 

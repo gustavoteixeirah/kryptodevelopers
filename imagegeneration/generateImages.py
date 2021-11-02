@@ -60,12 +60,12 @@ for trait in traits:
     print(f'{str(trait["tokenId"])} done')  
 
 
-with open("imagegeneration/hashes2.json", 'r') as f:
-    hashes = json.load(f)
+# with open("imagegeneration/hashes2.json", 'r') as f:
+#     hashes = json.load(f)
     
-for k,v in hashes.items():
-    print(k,v)
-    traits[v]["imageIPFS"] = k
+# for k,v in hashes.items():
+#     print(k,v)
+#     traits[v]["imageIPFS"] = k
 
-with open('traits.json', 'w') as outfile:
-    json.dump(traits, outfile, indent=4)
+# with open('traits.json', 'w') as outfile:
+#     json.dump(traits, outfile, indent=4)
