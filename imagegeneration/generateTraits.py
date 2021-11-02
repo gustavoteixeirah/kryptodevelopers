@@ -8,8 +8,8 @@ backgroundweights = [35, 5, 18, 2, 30, 10]
 
 # Fitzpatrick skin phototype
 # https://dermnetnz.org/topics/skin-phototype
-skinphototype = ["Jack", "Rose", "Alien"]
-skinphototypeweights = [5, 5, 90]
+skinphototype = ["Jack", "Rose", "Alien", "Robot"]
+skinphototypeweights = [5, 5, 1, 89]
 
 faceaccessory = ["None", "Guy Folkes", "Sunglasses", "Jason",
                  "Juliete", "Milos", "Eyeglasses", "Earring", "Eye Patch"]
