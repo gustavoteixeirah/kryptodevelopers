@@ -33,13 +33,19 @@ contract("KryptoDevelopers", (accounts) => {
 		});
 	});
 
-	describe("basic functinalities", async () => {
+	describe("basic functionalities", async () => {
 		it("flip sale state", async () => {
 			const currentState = await contract.saleIsActive();
 			await contract.flipSaleState();
 			const afterFlippingState = await contract.saleIsActive();
 			assert.isFalse(currentState);
 			assert.isTrue(afterFlippingState);
+		});
+		it("should not be able to mint more than 25 developers", async () => {
+			await contract.mint(26, {
+				from: accounts[1],
+				value: web3.utils.toWei("10", "ether"),
+			}).should.be.rejected;
 		});
 	});
 
@@ -83,16 +89,36 @@ contract("KryptoDevelopers", (accounts) => {
 				value: web3.utils.toWei("2", "ether"),
 			});
 
-			
-			const event = result.logs[0].args;
-			console.log("event ----------------->", event);
-			assert.equal(
-				event.from,
-				"0x0000000000000000000000000000000000000000",
-				"from is the contract"
-			);
-			assert.equal(event.to, minterAccount, "to is msg.sender");
-			assert.equal(event.tokenId, 0);
+			for (i = 0; i < 9; i++) {
+				const event = result.logs[i].args;
+				assert.equal(
+					event.from,
+					"0x0000000000000000000000000000000000000000",
+					"from is the contract"
+				);
+				assert.equal(event.to, minterAccount, "to is msg.sender");
+				assert.equal(event.tokenId, i + 1);
+			}
+		});
+
+		it("total supply now should be 10", async () => {
+			const totalSupply = await contract.totalSupply();
+			assert.equal(totalSupply, 10);
+		});
+
+		it("balance of minter account should now be 10", async () => {
+			const balance = await contract.balanceOf(minterAccount);
+			assert.equal(balance.toString(), new BN(10).toString());
+		});
+
+		it("minter account should now have 10 tokens with ids 0 from 9", async () => {
+			let tokens = [];
+			for (i = 0; i < 10; i++) {
+				tokens[i] = new BN([i]);
+			}
+
+			const tokensOfOwner = await contract.tokensOfOwner(minterAccount);
+			assert.equal(tokensOfOwner.toString(), tokens.toString());
 		});
 	});
 });
