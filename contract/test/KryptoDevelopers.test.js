@@ -56,7 +56,7 @@ contract("KryptoDevelopers", (accounts) => {
 		it("minting to the minter account", async () => {
 			const result = await contract.mint(1, {
 				from: minterAccount,
-				value: web3.utils.toWei("1", "ether"),
+				value: web3.utils.toWei("0.002", "ether"),
 			});
 
 			const event = result.logs[0].args;
@@ -92,7 +92,7 @@ contract("KryptoDevelopers", (accounts) => {
 		it("minting many tokens to the minter account", async () => {
 			const result = await contract.mint(9, {
 				from: minterAccount,
-				value: web3.utils.toWei("9", "ether"),
+				value: web3.utils.toWei("0.018", "ether"),
 			});
 
 			for (i = 0; i < 9; i++) {
@@ -159,31 +159,6 @@ contract("KryptoDevelopers", (accounts) => {
 				tokensOfOwner.toString(),
 				[10, 11, 12, 13, 14].toString()
 			);
-		});
-	});
-
-	describe("withdrawAll functionality", async () => {
-		// const t1 = 0x26746560f11cc20A0F2f660869FB0C16BebC89c3; // ETB Project
-		// const t2 = 0x060145869548cDC2976e96C0F1F849C48D79360E; // Gustavo
-		// const t3 = 0x74fAd84Ed3614ec1180C3a831AdF80Ac6f66022a; // Renan
-		// const t4 = 0x062CECB5D09C7b27299B40a6bb172e205cB70345; // Marcelo
-		it("should be able to withdraw", async () => {
-			const balanceBefore = await web3.eth.getBalance(accounts[0]);
-			const result = await contract.withdrawAll();
-			const balanceAfter = await web3.eth.getBalance(accounts[0]);
-			console.log(">>>>>result o withdrawAll<<<<<", result);
-			console.log(">>>>>balanceBefore o withdrawAll<<<<<", balanceBefore);
-			console.log(">>>>>balanceAfter o withdrawAll<<<<<", balanceAfter);
-			// for (i = 0; i < 5; i++) {
-			// 	const event = result.logs[i].args;
-			// 	assert.equal(
-			// 		event.from,
-			// 		"0x0000000000000000000000000000000000000000",
-			// 		"from is the contract"
-			// 	);
-			// 	assert.equal(event.to, luckyAccount, "to is msg.sender");
-			// 	assert.equal(event.tokenId, i + 10);
-			// }
 		});
 	});
 });

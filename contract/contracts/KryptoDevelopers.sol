@@ -13,7 +13,7 @@ contract KryptoDevelopers is ERC721Enumerable, Ownable {
 
     string public developersBaseURI;
 
-    uint256 private _reserved = 100;
+    uint256 private _reserved = 500;
 
     bool public saleIsActive = false;
 
@@ -21,8 +21,7 @@ contract KryptoDevelopers is ERC721Enumerable, Ownable {
 
     uint256 public constant MAX_DEVELOPERS = 10000;
 
-    // uint256 public constant developerPrice = 2000000000000000; // 0.002 ETH
-    uint256 public constant developerPrice = 1000000000000000000; // 1 ETH
+    uint256 public constant developerPrice = 2000000000000000; // 0.002 ETH
 
     // withdraw addresses
     address t1 = 0x4bd9736f70CbC26B8A0daC95d17aaca4bAEda360; // ETB Project
