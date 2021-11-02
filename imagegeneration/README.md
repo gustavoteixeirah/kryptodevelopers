@@ -1,9 +1,9 @@
 generate the hashes:
 
 ```bash
-ipfs add -r .
+ipfs add -r . > ../hashes.txt
 ```
 
-(added )+(\w+)+( output/)+(\w)+(.png)
+(added )+(\w+)+( output/)+(\w+)+(.png)
 
-"$2": "$4",
+"$2": $4,

@@ -1,7 +1,7 @@
 import traits from "./traits.json";
 
 const kryptoDeveloperApi = async (req, res) => {
-	const totalSupply = 20;
+	const totalSupply = 10000;
 
 	const query = req.query.id;
 

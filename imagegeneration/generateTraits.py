@@ -9,7 +9,7 @@ backgroundweights = [35, 5, 18, 2, 30, 10]
 # Fitzpatrick skin phototype
 # https://dermnetnz.org/topics/skin-phototype
 skinphototype = ["Jack", "Rose", "Alien", "Robot"]
-skinphototypeweights = [5, 5, 1, 89]
+skinphototypeweights = [47, 47, 5, 1]
 
 faceaccessory = ["None", "Guy Folkes", "Sunglasses", "Jason",
                  "Juliete", "Milos", "Eyeglasses", "Earring", "Eye Patch"]
@@ -17,7 +17,7 @@ faceaccessoryweights = [11.5, 2, 15, 3, 15, 10, 28, 0.5, 15]
 
 hair = ["None", "Dr Dree", "Goku", "Long", "Moicano",
         "Nerd", "Nerd Medium", "Short", "Very Short"]
-hairweights = [10, 2, 5, 9, 15, 15, 28, 1, 15]
+hairweights = [5, 2, 5, 9, 15, 15, 28, 6, 15]
 
 femalehair = ["None", "Channel", "Long", "Ponytail",
               "Ponytail2",  "Short", "Vanda", "Vanda2"]
@@ -39,7 +39,7 @@ print(sum(hairweights))
 print(sum(paintingweights))
 print(sum(beveragesweights))
 
-TOTAL_DEVELOPERS = 200
+TOTAL_DEVELOPERS = 10000
 
 traits = []
 
@@ -52,11 +52,13 @@ def createCombo():
     trait["Developer"] = random.choices(skinphototype, skinphototypeweights)[0]
 
     trait["Accessory"] = random.choices(faceaccessory, faceaccessoryweights)[0]
-
-    if trait["Developer"] == "Jack":
-        trait["Hair"] = random.choices(hair, hairweights)[0]
-    else:
-        trait["Hair"] = random.choices(femalehair, femalehairweights)[0]
+    if trait["Accessory"] == "Milos":
+        trait["Hair"] = "None"
+    else:    
+        if trait["Developer"] == "Jack":
+            trait["Hair"] = random.choices(hair, hairweights)[0]
+        else:
+            trait["Hair"] = random.choices(femalehair, femalehairweights)[0]
 
     trait["Painting"] = random.choices(painting, paintingweights)[0]
     trait["Beverage"] = random.choices(beverages, beveragesweights)[0]
@@ -70,7 +72,7 @@ def createCombo():
 for i in range(TOTAL_DEVELOPERS):
     newtraitcombo = createCombo()
     traits.append(newtraitcombo)
-    print(i)
+    # print(i)
 
 
 # ARE ALL DEVELOPERS  UNIQUE? I DUNNO KNOW HOW THIS WORKS BUT IT WORKS
@@ -81,16 +83,12 @@ def allUnique(x):
 
 print("All unique?" + str(allUnique(traits)))
 
-
-# ADD TOKEN IDS TO JSON
-
 i = 0
 for item in traits:
     item["tokenId"] = i
     i = i + 1
 
 
-# GET TRAIT COUNTS
 backgroundcounts = {}
 for item in backgrounds:
     backgroundcounts[item] = 0
@@ -107,7 +105,6 @@ haircounts = {}
 for item in hair + femalehair:
     haircounts[item] = 0
 
-
 paintingcounts = {}
 for item in painting:
     paintingcounts[item] = 0
@@ -115,10 +112,6 @@ for item in painting:
 beveragescounts = {}
 for item in beverages:
     beveragescounts[item] = 0
-
-# oneofonecounts = 0
-
-# signatures = [137,883,1327,1781,2528,2763,3833,5568,5858,6585,6812,7154,8412]
 
 for developer in traits:
     backgroundcounts[developer["Background"]] += 1
