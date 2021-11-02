@@ -8,12 +8,19 @@
     "start": "next start"
   },
   "dependencies": {
+    "@headlessui/react": "^1.4.1",
     "@metamask/detect-provider": "^1.2.0",
+    "install": "^0.13.0",
     "next": "11.1.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-icons": "^4.3.1",
+    "react-social-icons": "^5.6.1",
     "web3": "^1.6.0"
   },
   "devDependencies": {
+    "autoprefixer": "^10.3.7",
+    "postcss": "^8.3.11",
+    "tailwindcss": "^2.2.17"
   }
 }
