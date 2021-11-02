@@ -43,6 +43,7 @@ TOTAL_DEVELOPERS = 200
 
 traits = []
 
+
 def createCombo():
 
     trait = {}
@@ -52,7 +53,6 @@ def createCombo():
 
     trait["Accessory"] = random.choices(faceaccessory, faceaccessoryweights)[0]
 
-    # print(trait["Developer"])
     if trait["Developer"] == "Jack":
         trait["Hair"] = random.choices(hair, hairweights)[0]
     else:
