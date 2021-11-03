@@ -14,7 +14,7 @@ const Title = () => {
 						<h2 className="text-gray-400 text-md md:text-lg font-semibold mt-8 px-10">
 							{/* {/* <div className="inline md:block">Lorem ipsum dolor sit amet, consectetur adipiscing elit.&nbsp;</div> */}
 							<div className="inline md:block">
-								A NFT collection inspired the developers!
+								A NFT collection inspired by developers!
 							</div>
 						</h2>
 					</div>
