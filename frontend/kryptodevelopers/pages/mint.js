@@ -148,7 +148,7 @@ export default function Mint() {
   }
   return (
     <Base>
-      <div className="max-w-4xl mx-auto text-center">
+      <div className="max-w-4xl mx-auto text-center px-4">
         <div className="flex justify-between items-center">
           <Button as="a" href="/">
             &lsaquo; Back to Home
@@ -198,7 +198,7 @@ export default function Mint() {
           <div>
             <span>{balance === 0 ? "You don't own any developer at the moment." : 'Your currenty own ' + balance + ' developers.'}</span>
             {balance !== 0 && (
-              <div className="grid grid-cols-3 gap-8 py-8">
+              <div className="grid md:grid-cols-3 gap-8 py-8">
                 {tokensLinks.map((value, index) => {
                   return <img src={value} alt="KryptoDeveloper" width="256" height="256" key={value} className="block" />;
                 })}
