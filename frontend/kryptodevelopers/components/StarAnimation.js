@@ -1,9 +1,9 @@
 const StarAnimation = (props) => {
-  const { children } = props;
+  const { children, overflowHidden } = props;
 
   return (
     <div
-      className="w-auto overflow-hidden h-screen"
+      className={`w-auto ${overflowHidden ? 'overflow-hidden' : ''} h-screen`}
       style={{
         background: 'linear-gradient(to top, #111827 , #0b2c38)',
         borderBottom: '1px solid rgba(0, 0, 0, 0.125)',
@@ -16,6 +16,10 @@ const StarAnimation = (props) => {
       {children}
     </div>
   );
+};
+
+StarAnimation.defaultProps = {
+  overflowHidden: true,
 };
 
 export default StarAnimation;
