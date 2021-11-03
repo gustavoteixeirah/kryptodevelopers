@@ -122,8 +122,8 @@ export default function Mint() {
 			mode: "no-cors",
 			cache: "default",
 		};
-		// const url = 'https://kryptodevelopers.vercel.app/api/' + token;
-		const url = "http://localhost:3000/api/" + token;
+		const url = 'https://kryptodevelopers.vercel.app/api/' + token;
+		// const url = "http://localhost:3000/api/" + token;
 
 		fetch(url, myInit).then(async (T) => {
 			const json = await T.json();
