@@ -1,19 +1,10 @@
 import React from 'react';
 import LinkButton from './LinkButton';
+import StarAnimation from './StarAnimation';
 
 const Title = () => {
   return (
-    <div
-      className="w-auto overflow-hidden h-screen"
-      style={{
-        background: 'linear-gradient(to top, #111827 , #0b2c38)',
-        borderBottom: '1px solid rgba(0, 0, 0, 0.125)',
-      }}
-      id="home"
-    >
-      <div id="stars"></div>
-      <div id="stars2"></div>
-      <div id="stars3"></div>
+    <StarAnimation>
       <div className="flex justify-center items-center h-full">
         <div className="container mx-auto text-center">
           <div className="flex-1 items-center justify-center">
@@ -31,7 +22,7 @@ const Title = () => {
           </LinkButton>
         </div>
       </div>
-    </div>
+    </StarAnimation>
   );
 };
 

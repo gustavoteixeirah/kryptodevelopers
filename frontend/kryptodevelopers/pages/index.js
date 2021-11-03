@@ -1,3 +1,4 @@
+import Base from '../components/Base';
 import NavBar from '../components/NavBar';
 import Title from '../components/Title';
 import Description from '../components/Description';
@@ -6,12 +7,12 @@ import Team from '../components/Team';
 
 export default function Home() {
   return (
-    <div className="min-w-screen min-h-screen text-white font-poppins" style={{ backgroundColor: '#111827' }}>
+    <Base>
       <NavBar />
       <Title />
       <Description />
       {/* <Roadmap /> */}
       <Team />
-    </div>
+    </Base>
   );
 }
