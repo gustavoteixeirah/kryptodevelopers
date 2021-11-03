@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Web3 from 'web3';
 import Base from '../components/Base';
-import LinkButton from '../components/LinkButton';
+import Button from '../components/Button';
 import StarAnimation from '../components/StarAnimation';
 import kryptoDevelopers from './KryptoDevelopers.json';
 
@@ -110,7 +110,7 @@ export default function Mint() {
       mode: 'no-cors',
       cache: 'default',
     };
-    // const url = "https://kryptodevelopers.vercel.app/api/" + token;
+    // const url = 'https://kryptodevelopers.vercel.app/api/' + token;
     const url = 'http://localhost:3000/api/' + token;
 
     fetch(url, myInit).then(async (T) => {
@@ -148,69 +148,65 @@ export default function Mint() {
   }
   return (
     <Base>
-      <StarAnimation overflowHidden={false}>
-        <div className="flex justify-center items-center h-full">
-          <div className="container mx-auto text-center">
-            <div className="flex-1 items-center justify-center">
-              <h1 className="text-2xl md:text-4xl lg:text-6xl leading-relaxed">Mint Page</h1>
-            </div>
-            <LinkButton href="/mint" size="lg" classes="mt-12">
-              Mint NFT
-            </LinkButton>
+      <div className="max-w-4xl mx-auto text-center">
+        <div className="flex justify-between items-center">
+          <Button as="a" href="/">
+            &lsaquo; Back to Home
+          </Button>
+          <h1 className="text-2xl md:text-5xl leading-relaxed text-center py-12">Mint Page</h1>
+        </div>
 
-            <div className="mintInfo">
-              <div>
-                Wallet status: {signedIn ? 'Connected' : 'Disconnected'}
-                <button onClick={signedIn ? signOut : signIn}>{!signedIn ? 'CONNECT WALLET' : 'DISCONNECT WALLET'}</button>
+        <div className="text-justify">
+          <div>
+            Wallet status: {signedIn ? 'Connected' : 'Disconnected'}
+            <Button onClick={signedIn ? signOut : signIn} classes="ml-4">
+              {!signedIn ? 'CONNECT WALLET' : 'DISCONNECT WALLET'}
+            </Button>
+          </div>
+          <div>Total Supply: {totalSupply} </div>
+          <div>Sale have started: {saleStatus ? 'Active' : 'Not active'} </div>
+          <div>Wallet Address: {walletAddress} </div>
+          <div>Developer Price: {developerPrice} </div>
+        </div>
+
+        <div className="mintForm">
+          <div id="mint" className="my-4">
+            <span className="mr-4">Give me</span>
+
+            <input
+              type="number"
+              min="1"
+              max="20"
+              value={developersMintQtty}
+              onChange={(e) => setDevelopersMintQtty(e.target.value)}
+              name=""
+              className="bg-gray-900 focus:bg-gray-700 border border-teal-light py-2 px-4 rounded-lg"
+            />
+
+            <span className="ml-4">Developers!</span>
+          </div>
+          {saleStatus ? (
+            <Button onClick={() => mintDeveloper(developersMintQtty)}>
+              MINT {developersMintQtty} developers for {(developerPrice * developersMintQtty) / 10 ** 18} ETH + GAS
+            </Button>
+          ) : (
+            <Button>SALE IS NOT ACTIVE OR NO WALLET IS CONNECTED</Button>
+          )}
+        </div>
+        <div className="mt-4">
+          <h3 className="text-xl font-semibold">Your NFTs:</h3>
+          <div>
+            <span>{balance === 0 ? "You don't own any developer at the moment." : 'Your currenty own ' + balance + ' developers.'}</span>
+            {balance !== 0 && (
+              <div className="grid grid-cols-3 gap-8 py-8">
+                {tokensLinks.map((value, index) => {
+                  return <img src={value} alt="KryptoDeveloper" width="256" height="256" key={value} className="block" />;
+                })}
               </div>
-              <div>Total Supply: {totalSupply} </div>
-              <div>Sale have started: {saleStatus ? 'Active' : 'Not active'} </div>
-              <div>Wallet Address: {walletAddress} </div>
-              <div>Developer Price: {developerPrice} </div>
-            </div>
-
-            <div className="mintForm">
-              <div id="mint" className="">
-                <span className="">Give me</span>
-
-                <input type="number" min="1" max="20" value={developersMintQtty} onChange={(e) => setDevelopersMintQtty(e.target.value)} name="" className="" />
-
-                <span className="">Developers!</span>
-              </div>
-              {saleStatus ? (
-                <button onClick={() => mintDeveloper(developersMintQtty)} className="">
-                  MINT {developersMintQtty} developers for {(developerPrice * developersMintQtty) / 10 ** 18} ETH + GAS
-                </button>
-              ) : (
-                <button className="">SALE IS NOT ACTIVE OR NO WALLET IS CONNECTED</button>
-              )}
-            </div>
-            <div>
-              <h3>Your NFTs:</h3>
-              <div>
-                <span>{balance == 0 ? "You don't own any developer at the moment." : 'Your currenty own ' + balance + ' developers.'}</span>
-                {balance != 0 ? (
-                  <ul>
-                    <div className="list-none flex flex-wrap">
-                      {tokensLinks.map((value, index) => {
-                        return (
-                          <div className="p-4">
-                            <li key={index}>
-                              <img src={value} alt="KryptoDeveloper" width="256" height="256" />
-                            </li>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </ul>
-                ) : (
-                  <div></div>
-                )}
-              </div>
-            </div>
+            )}
           </div>
         </div>
-      </StarAnimation>
+      </div>
     </Base>
   );
 }

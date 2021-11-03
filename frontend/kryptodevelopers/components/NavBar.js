@@ -2,7 +2,7 @@ import React from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { Transition } from '@headlessui/react';
 import NavBarLink from './NavBarLink';
-import LinkButton from './LinkButton';
+import Button from './Button';
 
 const NavBar = () => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
@@ -28,9 +28,9 @@ const NavBar = () => {
             <NavBarLink href="#team">Team</NavBarLink>
             {/* <NavBarLink href="#social_links">Social Links</NavBarLink> */}
           </div>
-          <LinkButton href="/mint" size="sm">
+          <Button as="a" href="/mint" size="sm">
             Mint NFT
-          </LinkButton>
+          </Button>
         </div>
 
         <Transition

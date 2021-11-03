@@ -1,5 +1,5 @@
 import React from 'react';
-import LinkButton from './LinkButton';
+import Button from './Button';
 import StarAnimation from './StarAnimation';
 
 const Title = () => {
@@ -17,9 +17,9 @@ const Title = () => {
               <div className="inline md:block">Nullam aliquam quam viverra purus tellus purus. Convallis fusce</div>
             </h2>
           </div>
-          <LinkButton href="/mint" size="lg" classes="mt-12">
+          <Button as="a" href="/mint" size="lg" classes="mt-12">
             Mint NFT
-          </LinkButton>
+          </Button>
         </div>
       </div>
     </StarAnimation>
