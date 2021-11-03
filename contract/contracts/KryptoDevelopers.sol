@@ -24,10 +24,10 @@ contract KryptoDevelopers is ERC721Enumerable, Ownable {
     uint256 public constant developerPrice = 2000000000000000; // 0.002 ETH
 
     // withdraw addresses
-    address t1 = 0x16482Fbbc67e3c20C22a83a7792398507A22FaE0; // ETB Project
+    address t1 = 0x4e48c12cf0abef413a2e8994b4a6a743c3f2d296; // ETB Project (check)
     address t2 = 0x16482Fbbc67e3c20C22a83a7792398507A22FaE0; // Gustavo
     address t3 = 0x6CA165ac7f4cb3825b52602E19CF463D98b24B8C; // Renan
-    address t4 = 0x6CA165ac7f4cb3825b52602E19CF463D98b24B8C; // Marcelo
+    address t4 = 0x470f4e0314E6f3D0ff52de741fFa5d4Ba93762Af; // Marcelo
 
     constructor() ERC721("KryptoDevelopers", "KDEV") {
         developersBaseURI = "https://kryptodevelopers.vercel.app/api/";

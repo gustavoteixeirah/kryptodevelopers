@@ -13,7 +13,7 @@ const TeamMember = (props) => {
           <div className="text-2xl font-semibold">{data.name}</div>
           <div className="text-lg  text-gray-400">{data.role}</div>
         </div>
-        <div className="text-md text-center text-gray-300">{data.description}</div>
+        {/* <div className="text-md text-center text-gray-300">{data.description}</div> */}
         <div className="flex gap-4">
           {data.social.map((url) =>
             typeof url === 'object' ? (

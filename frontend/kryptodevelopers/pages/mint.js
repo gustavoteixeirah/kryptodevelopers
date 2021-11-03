@@ -137,10 +137,10 @@ export default function Mint() {
           gas: String(gasAmount),
         })
         .on('transactionHash', function (hash) {
-          // console.log("transactionHash", hash);
+          console.log("transactionHash", hash);
         });
     } else {
-      // console.log("Wallet not connected");
+      console.log("Wallet not connected");
     }
   }
   async function signOut() {
@@ -163,10 +163,10 @@ export default function Mint() {
               {!signedIn ? 'CONNECT WALLET' : 'DISCONNECT WALLET'}
             </Button>
           </div>
-          <div>Total Supply: {totalSupply} </div>
-          <div>Sale have started: {saleStatus ? 'Active' : 'Not active'} </div>
           <div>Wallet Address: {walletAddress} </div>
-          <div>Developer Price: {developerPrice} </div>
+          <div>Developers already minted: {totalSupply} / 10000 </div>
+          {/* <div>Sale is  {saleStatus ? 'Active!' : 'Not active!'} </div> */}
+          <div>Developer Price: {(developerPrice) / 10 ** 18} ETH </div>
         </div>
 
         <div className="mintForm">
@@ -187,7 +187,7 @@ export default function Mint() {
           </div>
           {saleStatus ? (
             <Button onClick={() => mintDeveloper(developersMintQtty)}>
-              MINT {developersMintQtty} developers for {(developerPrice * developersMintQtty) / 10 ** 18} ETH + GAS
+              MINT {developersMintQtty} developer(s) for {(developerPrice * developersMintQtty) / 10 ** 18} ETH + GAS
             </Button>
           ) : (
             <Button>SALE IS NOT ACTIVE OR NO WALLET IS CONNECTED</Button>
