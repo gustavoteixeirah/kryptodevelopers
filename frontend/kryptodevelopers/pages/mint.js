@@ -157,75 +157,18 @@ export default function Mint() {
             <LinkButton href="/mint" size="lg" classes="mt-12">
               Mint NFT
             </LinkButton>
-          </div>
-        </div>
-        <div className="mintInfo">
-          <div>
-            Wallet status: {signedIn ? 'Connected' : 'Disconnected'}
-            <button onClick={signedIn ? signOut : signIn}>{!signedIn ? 'CONNECT WALLET' : 'DISCONNECT WALLET'}</button>
-          </div>
-          <div>Total Supply: {totalSupply} </div>
-          <div>Sale have started: {saleStatus ? 'Active' : 'Not active'} </div>
-          <div>Wallet Address: {walletAddress} </div>
-          <div>Developer Price: {developerPrice} </div>
-        </div>
 
-        <div className="mintForm">
-          <div id="mint" className="">
-            <span className="">Give me</span>
-
-            <input type="number" min="1" max="20" value={developersMintQtty} onChange={(e) => setDevelopersMintQtty(e.target.value)} name="" className="" />
-
-            <span className="">Developers!</span>
-          </div>
-          {saleStatus ? (
-            <button onClick={() => mintDeveloper(developersMintQtty)} className="">
-              MINT {developersMintQtty} developers for {(developerPrice * developersMintQtty) / 10 ** 18} ETH + GAS
-            </button>
-          ) : (
-            <button className="">SALE IS NOT ACTIVE OR NO WALLET IS CONNECTED</button>
-          )}
-        </div>
-        <div>
-          <h3>Your NFTs:</h3>
-          <div>
-            <span>{balance == 0 ? "You don't own any developer at the moment." : 'Your currenty own ' + balance + ' developers.'}</span>
-            {balance != 0 ? (
-              <ul>
-                {tokensLinks.map((value, index) => {
-                  return (
-                    <li key={index}>
-                      <img src={value} alt="KryptoDeveloper" width="128" height="128" />
-                    </li>
-                  );
-                })}
-              </ul>
-            ) : (
-              <div></div>
-            )}
-          </div>
-        </div>
-      </StarAnimation>
-      <StarAnimation>
-        <div className="flex justify-center items-center h-full">
-          <div className="container mx-auto text-center">
-            <div className="flex-1 items-center justify-center">
-              <h1 className="text-2xl md:text-4xl lg:text-6xl leading-relaxed">Mint Page</h1>
+            <div className="mintInfo">
+              <div>
+                Wallet status: {signedIn ? 'Connected' : 'Disconnected'}
+                <button onClick={signedIn ? signOut : signIn}>{!signedIn ? 'CONNECT WALLET' : 'DISCONNECT WALLET'}</button>
+              </div>
+              <div>Total Supply: {totalSupply} </div>
+              <div>Sale have started: {saleStatus ? 'Active' : 'Not active'} </div>
+              <div>Wallet Address: {walletAddress} </div>
+              <div>Developer Price: {developerPrice} </div>
             </div>
-            <LinkButton href="/mint" size="lg" classes="mt-12">
-              Mint NFT
-            </LinkButton>
           </div>
-        </div>
-        <div className="mintInfo">
-          <div>
-            Wallet status: {signedIn ? 'Connected' : 'Disconnected'}
-            <button onClick={signedIn ? signOut : signIn}>{!signedIn ? 'CONNECT WALLET' : 'DISCONNECT WALLET'}</button>
-          </div>
-          <div>Total Supply: {totalSupply} </div>
-          <div>Sale have started: {saleStatus ? 'Active' : 'Not active'} </div>
-          <div>Wallet Address: {walletAddress} </div>
-          <div>Developer Price: {developerPrice} </div>
         </div>
 
         <div className="mintForm">
