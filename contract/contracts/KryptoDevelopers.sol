@@ -25,7 +25,7 @@ contract KryptoDevelopers is ERC721Enumerable, Ownable {
 
     // withdraw addresses
     address t1 = 0x4e48c12cf0abef413a2e8994b4a6a743c3f2d296; // ETB Project (check)
-    address t2 = 0x16482Fbbc67e3c20C22a83a7792398507A22FaE0; // Gustavo
+    address t2 = 0x3106B9112E18bcB0eBacaE0F9f69aa3A2F1fc9Bd; // Gustavo
     address t3 = 0x6CA165ac7f4cb3825b52602E19CF463D98b24B8C; // Renan
     address t4 = 0x470f4e0314E6f3D0ff52de741fFa5d4Ba93762Af; // Marcelo
 

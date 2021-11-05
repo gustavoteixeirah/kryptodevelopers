@@ -1,5 +1,9 @@
 # Eat The Blocks NFT Project
 
+Video explaining the project! https://www.youtube.com/watch?v=C1Si2ryJ9jI&t=6s
+If you want to mint some NFT in the Ropsten Test Network, you can!
+Just go to https://kryptodevelopers.vercel.app/mint
+
 ![KryptoDeveloper 1](kryptodeveloper.png?raw=true "Title")
 
 This is the repository of the source code for the NFT collection developed for the Eat The Blocks NFT Project
@@ -7,11 +11,10 @@ It is structured in three main folders based on the deliverables of the project:
 
 -   Smart contract
 -   Images
--   Frontend to visualize and merge NFTs
+-   Frontend to visualize NFTs
 
 ## Architecture
 
-![Architecture Diagram](architecture_diagram.png?raw=true "Title")
 
 ### Smart Contract
 
@@ -29,6 +32,9 @@ The website is the frontend used to:
     -   Social links
 -   Mint new NFTs
 -   Merge NFTs
+
+Website link: https://kryptodevelopers.vercel.app/
+
 
 #### Description
 
@@ -79,4 +85,4 @@ The developers can have the following traits:
 
 ### Serverless Merging Function
 
-This is the function that is going to be triggered when a owner that has 2 NFTs and wants to merge them in order to create a new one.
+This is the function that is going to be triggered when a owner that has 2 NFTs and wants to merge them in order to create a new one. At this moment, we couldn't develop this function.

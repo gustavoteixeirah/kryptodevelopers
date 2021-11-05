@@ -1,13 +1,9 @@
 import json
 import random
 
-# backgrounds = ["Dark Room", "Light Room", "Office", "Tower View", "Beach", "Bedroom"]
-# backgroundweights = [15, 10, 20, 5, 2, 48]
 backgrounds = ["The Office", "Beach", "Dark", "Tower", "Company", "Kitchen"]
 backgroundweights = [35, 5, 18, 2, 30, 10]
 
-# Fitzpatrick skin phototype
-# https://dermnetnz.org/topics/skin-phototype
 skinphototype = ["Jack", "Rose", "Alien", "Robot"]
 skinphototypeweights = [47, 47, 5, 1]
 
@@ -75,7 +71,6 @@ for i in range(TOTAL_DEVELOPERS):
     # print(i)
 
 
-# ARE ALL DEVELOPERS  UNIQUE? I DUNNO KNOW HOW THIS WORKS BUT IT WORKS
 def allUnique(x):
     seen = list()
     return not any(i in seen or seen.append(i) for i in x)
