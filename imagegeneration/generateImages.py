@@ -34,9 +34,9 @@ for trait in traits:
                 f'{path}/images/hair_female/{trait["Hair"]}.png').convert('RGBA')
 
     # ACCESSORY
-    if (trait["Accessory"] == "Earring" and trait["Developer"] == "Rose"):
+    if (trait["Accessory"] == "Earring" and (trait["Developer"] == "Rose" or trait["Developer"] == "Robot")):
         accessory = Image.open(
-            f'{path}/images/accessoryFemale/{trait["EarringFemale"]}.png').convert('RGBA')
+            f'{path}/images/accessoryFemale/{trait["Accessory"]}.png').convert('RGBA')
     else:
         accessory = Image.open(
             f'{path}/images/accessoryMale/{trait["Accessory"]}.png').convert('RGBA')
