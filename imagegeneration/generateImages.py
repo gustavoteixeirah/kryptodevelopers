@@ -29,7 +29,11 @@ for trait in traits:
             hair = Image.open(f'{path}/images/hair_female/{trait["Hair"]}.png').convert('RGBA')
 
     # ACCESSORY
-    accessory = Image.open(f'{path}/images/accessory/{trait["Accessory"]}.png').convert('RGBA')
+    if (trait["Accessory"] == "Earring" && trait["Developer"] == "Rose"): 
+        accessory = Image.open(f'{path}/images/accessory/{trait["EarringFemale"]}.png').convert('RGBA')
+    else:
+        accessory = Image.open(f'{path}/images/accessory/{trait["Accessory"]}.png').convert('RGBA')
+
     
     # PAINTING
     if (trait["Background"] == "Company"):
