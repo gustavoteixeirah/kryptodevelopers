@@ -26,7 +26,8 @@ for trait in traits:
     if (trait["Accessory"] == "Milos"):
         hair = Image.open(f'{path}/images/hair_male/None.png').convert('RGBA')
     else:
-        if (trait["Developer"] == "Jack" or trait["Developer"] == "Robot"):
+        # if (trait["Developer"] == "Jack" or trait["Developer"] == "Robot"):
+        if (trait["Developer"] == "Jack"):
             hair = Image.open(
                 f'{path}/images/hair_male/{trait["Hair"]}.png').convert('RGBA')
         else:

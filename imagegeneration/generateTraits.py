@@ -57,7 +57,8 @@ def createCombo():
         else:
             if trait["Developer"] == "Robot":
                 # trait["Hair"] = "None";
-                trait["Hair"] = random.choices(hair, hairweights)[0]
+                # trait["Hair"] = random.choices(hair, hairweights)[0]
+                trait["Hair"] = random.choices(femalehair, femalehairweights)[0]
             else: 
                 trait["Hair"] = random.choices(femalehair, femalehairweights)[0]
 
