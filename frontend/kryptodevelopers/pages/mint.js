@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Web3 from 'web3';
 import Base from '../components/Base';
 import Button from '../components/Button';
@@ -26,58 +26,15 @@ export default function Mint() {
         signIn();
     }, []);
 
-    useEffect(() => {
-        if (walletAddress) {
-            loadOwnedTokens();
-        }
-    }, [walletAddress]);
+    // useEffect(() => {
+    //     if (walletAddress) {
+    //         loadOwnedTokens();
+    //     }
+    // }, [walletAddress]);
 
-    const loadOwnedTokens = async () => {
-        const balance = await contract.methods.balanceOf(walletAddress).call();
-        setBalance(balance);
+    const loadOwnedTokens = async () => {};
 
-        if (balance !== 0) {
-            const ownedTokens = await contract.methods
-                .tokensOfOwner(walletAddress)
-                .call();
-
-            const promiseTokensUrls = [];
-
-            ownedTokens.forEach((token) => {
-                promiseTokensUrls.push(generateTokenURL(token));
-            });
-
-            const tokensUrls = await Promise.all(promiseTokensUrls);
-            setOwnedTokens(ownedTokens);
-            setTokensLinks(tokensUrls);
-        }
-    };
-
-    const loadBlockchainData = async () => {
-        const web3 = window.web3;
-        const networkId = await web3.eth.net.getId();
-
-        if (networkId) {
-            const abi = kryptoDevelopers.abi;
-            const contract = new web3.eth.Contract(abi, CONTRACT_ADDRESS);
-            setContract(contract);
-
-            const saleStatus = await contract.methods.saleIsActive().call();
-            setSaleStatus(saleStatus);
-
-            const totalSupply = await contract.methods.totalSupply().call();
-            setTotalSupply(totalSupply);
-
-            const developerPrice = await contract.methods
-                .developerPrice()
-                .call();
-            setDeveloperPrice(developerPrice);
-        } else {
-            window.alert('Smart contract not deployed yet.');
-        }
-    };
-
-    const signIn = useCallback(async () => {
+    async function signIn() {
         if (typeof window.web3 !== 'undefined') {
             window.web3 = new Web3(window.ethereum);
         } else {
@@ -100,19 +57,70 @@ export default function Mint() {
                             );
                         }
                     });
-                setWalletAddress(accounts[0]);
-                // console.log(walletAddress);
-                setSignedIn(true);
                 loadBlockchainData();
+                // setWalletAddress(accounts[0]);
+                // console.log(walletAddress);
+                // setSignedIn(true);
             });
         } catch (e) {
             if (process.env.NODE_ENV === 'development') {
                 console.error(e);
             }
         }
-    }, [loadBlockchainData]);
+    }
 
-    const generateTokenURL = async (token) => {
+    async function loadBlockchainData() {
+        const web3 = window.web3;
+        const networkId = await web3.eth.net.getId();
+
+        if (networkId) {
+            const abi = kryptoDevelopers.abi;
+            const contract = new web3.eth.Contract(abi, CONTRACT_ADDRESS);
+            setContract(contract);
+
+            const saleStatus = await contract.methods.saleIsActive().call();
+            setSaleStatus(saleStatus);
+
+            const totalSupply = await contract.methods.totalSupply().call();
+            setTotalSupply(totalSupply);
+
+            const developerPrice = await contract.methods
+                .developerPrice()
+                .call();
+            setDeveloperPrice(developerPrice);
+
+            const accounts = await web3.eth.getAccounts();
+            setWalletAddress(accounts[0]);
+            console.log('Conta conectada: ', accounts[0]);
+
+            const balance = await contract.methods
+                .balanceOf(accounts[0])
+                .call();
+            setBalance(balance);
+
+            if (balance !== 0) {
+                // console.log(a)
+                const ownedTokens = await contract.methods
+                    .tokensOfOwner(accounts[0])
+                    .call();
+
+                const promiseTokensUrls = [];
+
+                ownedTokens.forEach((token) => {
+                    promiseTokensUrls.push(setTokensURLs(token));
+                });
+
+                const tokensUrls = await Promise.all(promiseTokensUrls);
+                setOwnedTokens(ownedTokens);
+                setTokensLinks(tokensUrls);
+            }
+        } else {
+            window.alert('Smart contract not deployed yet.');
+        }
+        setSignedIn(true);
+    }
+
+    async function setTokensURLs(token) {
         const url = 'api/' + token;
 
         const result = await fetch(url, {
@@ -122,9 +130,9 @@ export default function Mint() {
         });
         const resultJson = await result.json();
         return resultJson.image;
-    };
+    }
 
-    const mintDeveloper = async (quantity) => {
+    async function mintDeveloper(quantity) {
         if (contract) {
             const price = Number(developerPrice) * quantity;
 
@@ -145,7 +153,7 @@ export default function Mint() {
                     setTransactionHash(hash);
                 })
                 .on('confirmation', async (confirmationNumber) => {
-                    await loadOwnedTokens(walletAddress);
+                    // await loadOwnedTokens(walletAddress);
                     setMintLoading(false);
                 })
                 .on('error', async (error) => {
@@ -155,11 +163,11 @@ export default function Mint() {
         } else {
             window.alert('Wallet not connected');
         }
-    };
+    }
 
-    const signOut = useCallback(async () => {
+    async function signOut() {
         setSignedIn(false);
-    }, [setSignedIn]);
+    }
 
     return (
         <Base>
@@ -186,7 +194,7 @@ export default function Mint() {
                     </div>
                     <div>Wallet Address: {walletAddress} </div>
                     <div>Developers already minted: {totalSupply} / 10000 </div>
-                    {/* <div>Sale is  {saleStatus ? 'Active!' : 'Not active!'} </div> */}
+                    <div>Sale is {saleStatus ? 'Active!' : 'Not active!'} </div>
                     <div>Developer Price: {developerPrice / 10 ** 18} ETH </div>
                 </div>
 
