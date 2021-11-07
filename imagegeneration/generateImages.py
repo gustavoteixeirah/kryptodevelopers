@@ -23,27 +23,23 @@ for trait in traits:
         f'{path}/images/developer/{trait["Developer"]}.png').convert('RGBA')
 
     # HAIR
-    # if (trait["Accessory"] == "Milos"):
-    #     hair = Image.open(f'{path}/images/hairMale/None.png').convert('RGBA')
-    # else:
-        # if (trait["Developer"] == "Jack" or trait["Developer"] == "Robot"):
     if (trait["Developer"] == "Jack"):
         hair = Image.open(
             f'{path}/images/hairMale/{trait["Hair"]}.png').convert('RGBA')
+    elif (trait["Developer"] == "Robot"):
+        hair = Image.open(
+            f'{path}/images/hairRobot/{trait["Hair"]}.png').convert('RGBA')
     else:
-        if (trait["Developer"] == "Robot"):
-            hair = Image.open(
-                f'{path}/images/hairRobot/{trait["Hair"]}.png').convert('RGBA')   
-        else:
-            hair = Image.open(f'{path}/images/hairFemale/{trait["Hair"]}.png').convert('RGBA')
+        hair = Image.open(
+            f'{path}/images/hairFemale/{trait["Hair"]}.png').convert('RGBA')
 
     # ACCESSORY
-    if (trait["Accessory"] == "Earring" and (trait["Developer"] == "Rose" or trait["Developer"] == "Robot")):
-        accessory = Image.open(
-            f'{path}/images/accessoryFemale/{trait["Accessory"]}.png').convert('RGBA')
-    else:
+    if (trait["Developer"] == "Jack"):
         accessory = Image.open(
             f'{path}/images/accessoryMale/{trait["Accessory"]}.png').convert('RGBA')
+    else:
+        accessory = Image.open(
+            f'{path}/images/accessoryFemale/{trait["Accessory"]}.png').convert('RGBA')
 
     # PAINTING
     if (trait["Background"] == "Company"):
