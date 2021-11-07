@@ -74,21 +74,21 @@ export default function Mint() {
             setDeveloperPrice(developerPrice);
 
             const accounts = await web3.eth.getAccounts();
-            setWalletAddress(accounts[0]);
+
+            if (accounts.length > 0) {
+                setWalletAddress(accounts[0]);
+                setSignedIn(true);
+            }
         } else {
             window.alert('Smart contract not deployed yet.');
         }
-
-        setSignedIn(true);
     };
 
     const signIn = useCallback(async () => {
         if (typeof window.web3 !== 'undefined') {
             // Use existing gateway
             window.web3 = new Web3(window.ethereum);
-            // console.log("Ethereum wallet connected!");
         } else {
-            // console.log("Ethereum wallet not connected...");
             alert(
                 'No Ethereum interface injected into browser. Read-only access'
             );
