@@ -1,14 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import Web3 from 'web3';
 import Base from '../components/Base';
 import Button from '../components/Button';
 import kryptoDevelopers from './KryptoDevelopers.json';
 
+// const CONTRACT_ADDRESS = "0xb72296B78aBfc7f3BB156DEd531eA82B4f3F035E";
 const CONTRACT_ADDRESS = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS;
 const EXPLORER = process.env.NEXT_PUBLIC_EXPLORER;
 const CONTRACT_NETWORK = process.env.NEXT_PUBLIC_NETWORK;
 
 export default function Mint() {
+    // FOR WALLET
     const [signedIn, setSignedIn] = useState(false);
     const [mintLoading, setMintLoading] = useState(false);
     const [walletAddress, setWalletAddress] = useState(null);
@@ -26,56 +28,41 @@ export default function Mint() {
         signIn();
     }, []);
 
-    // useEffect(() => {
-    //     if (walletAddress) {
-    //         loadOwnedTokens();
-    //     }
-    // }, [walletAddress]);
-
-    const loadOwnedTokens = async () => {};
-
-    async function signIn() {
-        if (typeof window.web3 !== 'undefined') {
-            window.web3 = new Web3(window.ethereum);
-        } else {
-            alert(
-                'No Ethereum interface injected into browser. Read-only access'
-            );
+    useEffect(() => {
+        if (walletAddress) {
+            loadOwnedTokens();
         }
+    }, [walletAddress]);
 
-        try {
-            window.ethereum.enable().then(function (accounts) {
-                window.web3.eth.net
-                    .getNetworkType()
-                    // checks if connected network is mainnet (change this to rinkeby if you wanna test on testnet)
-                    .then((network) => {
-                        if (network != CONTRACT_NETWORK) {
-                            alert(
-                                'You are on ' +
-                                    network +
-                                    " network. Change network to mainnet or you won't be able to do anything here"
-                            );
-                        }
-                    });
-                loadBlockchainData();
-                // setWalletAddress(accounts[0]);
-                // console.log(walletAddress);
-                // setSignedIn(true);
+    const loadOwnedTokens = async () => {
+        const balance = await contract.methods.balanceOf(walletAddress).call();
+        setBalance(balance);
+
+        if (balance !== 0) {
+            const ownedTokens = await contract.methods
+                .tokensOfOwner(walletAddress)
+                .call();
+
+            const promiseTokensUrls = [];
+
+            ownedTokens.forEach((token) => {
+                promiseTokensUrls.push(generateTokenURL(token));
             });
-        } catch (e) {
-            if (process.env.NODE_ENV === 'development') {
-                console.error(e);
-            }
-        }
-    }
 
-    async function loadBlockchainData() {
+            const tokensUrls = await Promise.all(promiseTokensUrls);
+            setOwnedTokens(ownedTokens);
+            setTokensLinks(tokensUrls);
+        }
+    };
+
+    const loadBlockchainData = async () => {
         const web3 = window.web3;
         const networkId = await web3.eth.net.getId();
-
+        console.log('network id', networkId);
         if (networkId) {
             const abi = kryptoDevelopers.abi;
             const contract = new web3.eth.Contract(abi, CONTRACT_ADDRESS);
+            console.log('contract', contract);
             setContract(contract);
 
             const saleStatus = await contract.methods.saleIsActive().call();
@@ -90,37 +77,47 @@ export default function Mint() {
             setDeveloperPrice(developerPrice);
 
             const accounts = await web3.eth.getAccounts();
-            setWalletAddress(accounts[0]);
-            console.log('Conta conectada: ', accounts[0]);
 
-            const balance = await contract.methods
-                .balanceOf(accounts[0])
-                .call();
-            setBalance(balance);
+            console.log(accounts);
 
-            if (balance !== 0) {
-                // console.log(a)
-                const ownedTokens = await contract.methods
-                    .tokensOfOwner(accounts[0])
-                    .call();
-
-                const promiseTokensUrls = [];
-
-                ownedTokens.forEach((token) => {
-                    promiseTokensUrls.push(setTokensURLs(token));
-                });
-
-                const tokensUrls = await Promise.all(promiseTokensUrls);
-                setOwnedTokens(ownedTokens);
-                setTokensLinks(tokensUrls);
+            if (accounts.length > 0) {
+                setWalletAddress(accounts[0]);
+                setSignedIn(true);
             }
         } else {
             window.alert('Smart contract not deployed yet.');
         }
-        setSignedIn(true);
-    }
+    };
 
-    async function setTokensURLs(token) {
+    const signIn = async () => {
+        console.log('signin');
+        if (typeof window.web3 !== 'undefined') {
+            // Use existing gateway
+            window.web3 = new Web3(window.ethereum);
+        } else {
+            alert(
+                'No Ethereum interface injected into browser. Read-only access'
+            );
+        }
+        try {
+            // checks if connected network is mainnet (change this to rinkeby if you wanna test on testnet)
+            const network = await window.web3.eth.net.getNetworkType();
+            if (network !== CONTRACT_NETWORK) {
+                alert(
+                    'You are on ' +
+                        network +
+                        " network. Change network to mainnet or you won't be able to do anything here"
+                );
+            }
+            await loadBlockchainData();
+        } catch (e) {
+            if (process.env.NODE_ENV === 'development') {
+                console.error(e);
+            }
+        }
+    };
+
+    const generateTokenURL = async (token) => {
         const url = 'api/' + token;
 
         const result = await fetch(url, {
@@ -130,9 +127,9 @@ export default function Mint() {
         });
         const resultJson = await result.json();
         return resultJson.image;
-    }
+    };
 
-    async function mintDeveloper(quantity) {
+    const mintDeveloper = async (quantity) => {
         if (contract) {
             const price = Number(developerPrice) * quantity;
 
@@ -153,7 +150,7 @@ export default function Mint() {
                     setTransactionHash(hash);
                 })
                 .on('confirmation', async (confirmationNumber) => {
-                    // await loadOwnedTokens(walletAddress);
+                    await loadOwnedTokens(walletAddress);
                     setMintLoading(false);
                 })
                 .on('error', async (error) => {
@@ -161,13 +158,13 @@ export default function Mint() {
                     setMintLoading(false);
                 });
         } else {
-            window.alert('Wallet not connected');
+            console.log('Wallet not connected');
         }
-    }
+    };
 
-    async function signOut() {
+    const signOut = useCallback(async () => {
         setSignedIn(false);
-    }
+    }, [setSignedIn]);
 
     return (
         <Base>
@@ -194,7 +191,7 @@ export default function Mint() {
                     </div>
                     <div>Wallet Address: {walletAddress} </div>
                     <div>Developers already minted: {totalSupply} / 10000 </div>
-                    <div>Sale is {saleStatus ? 'Active!' : 'Not active!'} </div>
+                    {/* <div>Sale is  {saleStatus ? 'Active!' : 'Not active!'} </div> */}
                     <div>Developer Price: {developerPrice / 10 ** 18} ETH </div>
                 </div>
 
@@ -237,7 +234,6 @@ export default function Mint() {
                         <div className="mt-4">
                             <Button
                                 as="a"
-                                // TODO Mudar pra environment variable
                                 href={`${EXPLORER}${transactionHash}`}
                                 target="_blank"
                             >
@@ -272,6 +268,13 @@ export default function Mint() {
                         </div>
                     )}
                 </div>
+            </div>
+
+            <div className="mt-4 text-lg">
+                Vercel ENV: {process.env.NEXT_PUBLIC_VERCEL_ENV}
+            </div>
+            <div className="text-lg">
+                Commit version: {process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA}
             </div>
         </Base>
     );
