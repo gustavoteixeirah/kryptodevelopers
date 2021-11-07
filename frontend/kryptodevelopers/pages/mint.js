@@ -1,10 +1,9 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Web3 from 'web3';
 import Base from '../components/Base';
 import Button from '../components/Button';
 import kryptoDevelopers from './KryptoDevelopers.json';
 
-// const CONTRACT_ADDRESS = "0xb72296B78aBfc7f3BB156DEd531eA82B4f3F035E";
 const CONTRACT_ADDRESS = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS;
 
 export default function Mint() {
@@ -74,6 +73,7 @@ export default function Mint() {
             setDeveloperPrice(developerPrice);
 
             const accounts = await web3.eth.getAccounts();
+            console.log('accounts...', accounts[0]);
             setWalletAddress(accounts[0]);
         } else {
             window.alert('Smart contract not deployed yet.');
@@ -93,17 +93,38 @@ export default function Mint() {
                 'No Ethereum interface injected into browser. Read-only access'
             );
         }
+        // try {
+        //     // checks if connected network is mainnet (change this to rinkeby if you wanna test on testnet)
+        //     const network = await window.web3.eth.net.getNetworkType();
+        //     // TODO Mudar pra environment variable
+        //     if (network !== 'private') {
+        //         alert(
+        //             'You are on ' +
+        //                 network +
+        //                 " network. Change network to mainnet or you won't be able to do anything here"
+        //         );
+        //     }
+        // 	console.log('loadBlockchainData...')
+        //     await loadBlockchainData();
+
         try {
-            // checks if connected network is mainnet (change this to rinkeby if you wanna test on testnet)
-            const network = await window.web3.eth.net.getNetworkType();
-            if (network !== 'ropsten') {
-                alert(
-                    'You are on ' +
-                        network +
-                        " network. Change network to mainnet or you won't be able to do anything here"
-                );
-            }
-            await loadBlockchainData();
+            window.ethereum.enable().then(function (accounts) {
+                window.web3.eth.net
+                    .getNetworkType()
+                    // checks if connected network is mainnet (change this to rinkeby if you wanna test on testnet)
+                    .then((network) => {
+                        console.log(network);
+                        if (network != 'private') {
+                            alert(
+                                'You are on ' +
+                                    network +
+                                    " network. Change network to mainnet or you won't be able to do anything here"
+                            );
+                        }
+                    });
+				console.log("accounts[0]...",accounts[0]);
+                loadBlockchainData();
+            });
         } catch (e) {
             if (process.env.NODE_ENV === 'development') {
                 console.error(e);
@@ -228,7 +249,8 @@ export default function Mint() {
                         <div className="mt-4">
                             <Button
                                 as="a"
-                                href={`https://ropsten.etherscan.io/tx/${transactionHash}`}
+                                // TODO Mudar pra environment variable
+                                href={`https://testnet.bscscan.com/tx/${transactionHash}`}
                                 target="_blank"
                             >
                                 View Transaction on Explorer
