@@ -72,13 +72,6 @@ export default function Mint() {
                 .developerPrice()
                 .call();
             setDeveloperPrice(developerPrice);
-
-            const accounts = await web3.eth.getAccounts();
-
-            if (accounts.length > 0) {
-                setWalletAddress(accounts[0]);
-                setSignedIn(true);
-            }
         } else {
             window.alert('Smart contract not deployed yet.');
         }
@@ -107,6 +100,9 @@ export default function Mint() {
                             );
                         }
                     });
+                setWalletAddress(accounts[0]);
+                // console.log(walletAddress);
+                setSignedIn(true);
                 loadBlockchainData();
             });
         } catch (e) {
