@@ -5,6 +5,7 @@ import Button from '../components/Button';
 import kryptoDevelopers from './KryptoDevelopers.json';
 
 const CONTRACT_ADDRESS = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS;
+const EXPLORER = process.env.NEXT_PUBLIC_EXPLORER;
 
 export default function Mint() {
     // FOR WALLET
@@ -84,11 +85,8 @@ export default function Mint() {
 
     const signIn = useCallback(async () => {
         if (typeof window.web3 !== 'undefined') {
-            // Use existing gateway
             window.web3 = new Web3(window.ethereum);
-            // console.log("Ethereum wallet connected!");
         } else {
-            // console.log("Ethereum wallet not connected...");
             alert(
                 'No Ethereum interface injected into browser. Read-only access'
             );
@@ -250,7 +248,7 @@ export default function Mint() {
                             <Button
                                 as="a"
                                 // TODO Mudar pra environment variable
-                                href={`https://testnet.bscscan.com/tx/${transactionHash}`}
+                                href={`${EXPLORER}${transactionHash}`}
                                 target="_blank"
                             >
                                 View Transaction on Explorer

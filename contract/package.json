@@ -13,7 +13,9 @@
 	"author": "Gustavo Teixeira",
 	"license": "ISC",
 	"dependencies": {
-		"@openzeppelin/contracts": "^4.3.2"
+		"@openzeppelin/contracts": "^4.3.2",
+		"@truffle/hdwallet-provider": "^1.6.0",
+		"dotenv": "^10.0.0"
 	},
 	"devDependencies": {
 		"@openzeppelin/test-helpers": "^0.5.15",
