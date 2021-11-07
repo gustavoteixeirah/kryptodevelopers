@@ -4,8 +4,10 @@ import random
 backgrounds = ["The Office", "Beach", "Dark", "Tower", "Company", "Kitchen"]
 backgroundweights = [35, 5, 18, 2, 30, 10]
 
-skinphototype = ["Jack", "Rose", "Alien", "Robot"]
-skinphototypeweights = [25, 25, 25, 25]
+skinphototype = ["Jack", "Rose", "Alien",
+                 "Robot", "Gustavo", "Renan", "Marcelo", "V"]
+skinphototypeweights = [0, 0, 0, 0, 25, 25, 25, 25]
+# skinphototypeweights = [47.40, 47.40, 4.15, 1.0, 0.01, 0.01, 0.01, 0.02]
 
 faceaccessory = ["None", "Guy Folkes", "Sunglasses", "Jason",
                  "Juliete", "Milos", "Eyeglasses", "Earring", "Eye Patch"]
@@ -41,7 +43,7 @@ print(sum(paintingweights))
 print(sum(beveragesweights))
 print(sum(robothairweights))
 
-TOTAL_DEVELOPERS = 15000
+TOTAL_DEVELOPERS = 1000
 
 traits = []
 
@@ -53,21 +55,22 @@ def createCombo():
     trait["Developer"] = random.choices(skinphototype, skinphototypeweights)[0]
 
     trait["Accessory"] = random.choices(faceaccessory, faceaccessoryweights)[0]
-
-    if trait["Accessory"] == "Milos":
-        trait["Hair"] = "None"
-    else:
-        if trait["Developer"] == "Jack":
-            trait["Hair"] = random.choices(hair, hairweights)[0]
+    
+    if trait["Developer"] != "Gustavo" or trait["Developer"] != "Renan" or trait["Developer"] != "Marcelo" or trait["Developer"] != "V":
+        if trait["Accessory"] == "Milos":
+            trait["Hair"] = "None"
         else:
-            if trait["Developer"] == "Robot":
-                # trait["Hair"] = "None";
-                # trait["Hair"] = random.choices(hair, hairweights)[0]
-                trait["Hair"] = random.choices(
-                    robothair, robothairweights)[0]
+            if trait["Developer"] == "Jack":
+                trait["Hair"] = random.choices(hair, hairweights)[0]
             else:
-                trait["Hair"] = random.choices(
-                    femalehair, femalehairweights)[0]
+                if trait["Developer"] == "Robot":
+                    # trait["Hair"] = "None";
+                    # trait["Hair"] = random.choices(hair, hairweights)[0]
+                    trait["Hair"] = random.choices(
+                        robothair, robothairweights)[0]
+                else:
+                    trait["Hair"] = random.choices(
+                        femalehair, femalehairweights)[0]
 
     trait["Painting"] = random.choices(painting, paintingweights)[0]
     trait["Beverage"] = random.choices(beverages, beveragesweights)[0]

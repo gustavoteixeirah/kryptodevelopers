@@ -34,12 +34,12 @@ for trait in traits:
             f'{path}/images/hairFemale/{trait["Hair"]}.png').convert('RGBA')
 
     # ACCESSORY
-    if (trait["Developer"] == "Jack"):
-        accessory = Image.open(
-            f'{path}/images/accessoryMale/{trait["Accessory"]}.png').convert('RGBA')
-    else:
+    if (trait["Developer"] == "Jack" or trait["Developer"] == "Robot" or trait["Developer"] == "Alien"):
         accessory = Image.open(
             f'{path}/images/accessoryFemale/{trait["Accessory"]}.png').convert('RGBA')
+    else:
+        accessory = Image.open(
+            f'{path}/images/accessoryMale/{trait["Accessory"]}.png').convert('RGBA')
 
     # PAINTING
     if (trait["Background"] == "Company"):
