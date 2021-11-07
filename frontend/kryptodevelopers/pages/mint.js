@@ -101,7 +101,9 @@ export default function Mint() {
         }
         try {
             // checks if connected network is mainnet (change this to rinkeby if you wanna test on testnet)
+            await window.ethereum.enable();
             const network = await window.web3.eth.net.getNetworkType();
+
             if (network !== CONTRACT_NETWORK) {
                 alert(
                     'You are on ' +
@@ -109,6 +111,7 @@ export default function Mint() {
                         " network. Change network to mainnet or you won't be able to do anything here"
                 );
             }
+
             await loadBlockchainData();
         } catch (e) {
             if (process.env.NODE_ENV === 'development') {
