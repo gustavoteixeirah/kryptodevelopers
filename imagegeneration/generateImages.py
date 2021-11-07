@@ -23,16 +23,19 @@ for trait in traits:
         f'{path}/images/developer/{trait["Developer"]}.png').convert('RGBA')
 
     # HAIR
-    if (trait["Accessory"] == "Milos"):
-        hair = Image.open(f'{path}/images/hair_male/None.png').convert('RGBA')
-    else:
+    # if (trait["Accessory"] == "Milos"):
+    #     hair = Image.open(f'{path}/images/hairMale/None.png').convert('RGBA')
+    # else:
         # if (trait["Developer"] == "Jack" or trait["Developer"] == "Robot"):
-        if (trait["Developer"] == "Jack"):
+    if (trait["Developer"] == "Jack"):
+        hair = Image.open(
+            f'{path}/images/hairMale/{trait["Hair"]}.png').convert('RGBA')
+    else:
+        if (trait["Developer"] == "Robot"):
             hair = Image.open(
-                f'{path}/images/hair_male/{trait["Hair"]}.png').convert('RGBA')
+                f'{path}/images/hairRobot/{trait["Hair"]}.png').convert('RGBA')   
         else:
-            hair = Image.open(
-                f'{path}/images/hair_female/{trait["Hair"]}.png').convert('RGBA')
+            hair = Image.open(f'{path}/images/hairFemale/{trait["Hair"]}.png').convert('RGBA')
 
     # ACCESSORY
     if (trait["Accessory"] == "Earring" and (trait["Developer"] == "Rose" or trait["Developer"] == "Robot")):

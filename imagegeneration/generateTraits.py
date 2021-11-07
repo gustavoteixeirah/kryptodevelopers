@@ -5,19 +5,24 @@ backgrounds = ["The Office", "Beach", "Dark", "Tower", "Company", "Kitchen"]
 backgroundweights = [35, 5, 18, 2, 30, 10]
 
 skinphototype = ["Jack", "Rose", "Alien", "Robot"]
-skinphototypeweights = [0, 0, 0, 100]
+skinphototypeweights = [25, 25, 25, 25]
 
 faceaccessory = ["None", "Guy Folkes", "Sunglasses", "Jason",
                  "Juliete", "Milos", "Eyeglasses", "Earring", "Eye Patch"]
 faceaccessoryweights = [11.5, 2, 15, 3, 15, 10, 28, 0.5, 15]
 
 hair = ["None", "Dr Dree", "Goku", "Long", "Moicano",
-        "Nerd", "Nerd Medium", "Short", "Very Short"]
+        "Nerd", "Nerd Medium", "Military", "Very Short"]
 hairweights = [5, 2, 5, 9, 15, 15, 28, 6, 15]
 
-femalehair = ["None", "Channel", "Long", "Ponytail",
-              "Ponytail2",  "Short", "Vanda", "Vanda2"]
+femalehair = ["None", "Channel", "Straight Long", "Ponytail",
+              "Ponytail Short",  "Short", "Vanda", "Vortex"]
 femalehairweights = [10, 2, 5, 9, 15, 15, 28, 16]
+
+robothair = ["None", "Channel", "Straight Long", "Ponytail",
+             "Short", "Vanda", "Vortex", "Dr Dree", "Goku", "Long", "Moicano",
+             "Nerd", "Nerd Medium", "Military", "Very Short"]
+robothairweights = [4, 3, 6, 5, 6, 12, 9, 5, 12, 7, 9, 1, 5, 10, 6]
 
 painting = ["None", "Java", "Javascript", "Go",
             "Python", "Ruby", "Solidity", "CSharp"]
@@ -34,11 +39,11 @@ print(sum(faceaccessoryweights))
 print(sum(hairweights))
 print(sum(paintingweights))
 print(sum(beveragesweights))
+print(sum(robothairweights))
 
-TOTAL_DEVELOPERS = 1000
+TOTAL_DEVELOPERS = 15000
 
 traits = []
-
 
 def createCombo():
 
@@ -47,20 +52,22 @@ def createCombo():
     trait["Background"] = random.choices(backgrounds, backgroundweights)[0]
     trait["Developer"] = random.choices(skinphototype, skinphototypeweights)[0]
 
-    trait["Accessory"] = random.choices(faceaccessory, faceaccessoryweights)[0]    
-    
+    trait["Accessory"] = random.choices(faceaccessory, faceaccessoryweights)[0]
+
     if trait["Accessory"] == "Milos":
         trait["Hair"] = "None"
-    else:    
+    else:
         if trait["Developer"] == "Jack":
             trait["Hair"] = random.choices(hair, hairweights)[0]
         else:
             if trait["Developer"] == "Robot":
                 # trait["Hair"] = "None";
                 # trait["Hair"] = random.choices(hair, hairweights)[0]
-                trait["Hair"] = random.choices(femalehair, femalehairweights)[0]
-            else: 
-                trait["Hair"] = random.choices(femalehair, femalehairweights)[0]
+                trait["Hair"] = random.choices(
+                    robothair, robothairweights)[0]
+            else:
+                trait["Hair"] = random.choices(
+                    femalehair, femalehairweights)[0]
 
     trait["Painting"] = random.choices(painting, paintingweights)[0]
     trait["Beverage"] = random.choices(beverages, beveragesweights)[0]
@@ -74,7 +81,7 @@ def createCombo():
 for i in range(TOTAL_DEVELOPERS):
     newtraitcombo = createCombo()
     traits.append(newtraitcombo)
-    # print(i)
+    print(i)
 
 
 def allUnique(x):
