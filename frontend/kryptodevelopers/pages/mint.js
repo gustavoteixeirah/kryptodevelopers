@@ -6,9 +6,9 @@ import kryptoDevelopers from './KryptoDevelopers.json';
 
 const CONTRACT_ADDRESS = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS;
 const EXPLORER = process.env.NEXT_PUBLIC_EXPLORER;
+const CONTRACT_NETWORK = process.env.NEXT_PUBLIC_NETWORK;
 
 export default function Mint() {
-    // FOR WALLET
     const [signedIn, setSignedIn] = useState(false);
     const [mintLoading, setMintLoading] = useState(false);
     const [walletAddress, setWalletAddress] = useState(null);
@@ -74,13 +74,14 @@ export default function Mint() {
             setDeveloperPrice(developerPrice);
 
             const accounts = await web3.eth.getAccounts();
-            console.log('accounts...', accounts[0]);
-            setWalletAddress(accounts[0]);
+
+            if (accounts.length > 0) {
+                setWalletAddress(accounts[0]);
+                setSignedIn(true);
+            }
         } else {
             window.alert('Smart contract not deployed yet.');
         }
-
-        setSignedIn(true);
     };
 
     const signIn = useCallback(async () => {
@@ -91,19 +92,6 @@ export default function Mint() {
                 'No Ethereum interface injected into browser. Read-only access'
             );
         }
-        // try {
-        //     // checks if connected network is mainnet (change this to rinkeby if you wanna test on testnet)
-        //     const network = await window.web3.eth.net.getNetworkType();
-        //     // TODO Mudar pra environment variable
-        //     if (network !== 'private') {
-        //         alert(
-        //             'You are on ' +
-        //                 network +
-        //                 " network. Change network to mainnet or you won't be able to do anything here"
-        //         );
-        //     }
-        // 	console.log('loadBlockchainData...')
-        //     await loadBlockchainData();
 
         try {
             window.ethereum.enable().then(function (accounts) {
@@ -111,8 +99,7 @@ export default function Mint() {
                     .getNetworkType()
                     // checks if connected network is mainnet (change this to rinkeby if you wanna test on testnet)
                     .then((network) => {
-                        console.log(network);
-                        if (network != 'private') {
+                        if (network != CONTRACT_NETWORK) {
                             alert(
                                 'You are on ' +
                                     network +
@@ -120,7 +107,6 @@ export default function Mint() {
                             );
                         }
                     });
-				console.log("accounts[0]...",accounts[0]);
                 loadBlockchainData();
             });
         } catch (e) {
@@ -171,7 +157,7 @@ export default function Mint() {
                     setMintLoading(false);
                 });
         } else {
-            console.log('Wallet not connected');
+            window.alert('Wallet not connected');
         }
     };
 
