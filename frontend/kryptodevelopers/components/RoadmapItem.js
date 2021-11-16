@@ -26,14 +26,14 @@ const RoadmapItem = (props) => {
             ))}
             {odd && (
                 <div className="absolute bottom-1/2 right-full z-10 flex items-center justify-center">
-                    <div className="w-5 h-5 rounded-full bg-gray-300"></div>
-                    <div className="w-5 h-1 bg-gray-300"></div>
+                    {/* <div className="w-5 h-5 rounded-full bg-gray-300"></div> */}
+                    <div className="w-7 h-1 bg-gray-700"></div>
                 </div>
             )}
             {!odd && (
                 <div className="absolute bottom-1/2 left-full z-10 flex items-center justify-center">
-                    <div className="w-6 h-1 bg-gray-300"></div>
-                    <div className="w-5 h-5 rounded-full bg-gray-300"></div>
+                    <div className="w-8 h-1 bg-gray-700"></div>
+                    {/* <div className="w-5 h-5 rounded-full bg-gray-300"></div> */}
                 </div>
             )}
         </div>
