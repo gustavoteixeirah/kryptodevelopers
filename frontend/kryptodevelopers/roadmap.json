@@ -1,0 +1,66 @@
+[
+    {
+        "phase": 1,
+        "date": {
+            "line1": "November 24th",
+            "line2": "2021 - 03:00PM UTC"
+        },
+        "descriptionItems": [
+            {
+                "title": "Community Whitelist Sale",
+                "text": "EatTheBlocks Community Whitelist Sale of 30% KryptoDevelopers."
+            },
+            {
+                "title": "Award ETB Hackaton Teams",
+                "text": "Award the participants of the EatTheBlocks 3rd Hackaton."
+            }
+        ]
+    },
+    {
+        "phase": 2,
+        "date": {
+            "line1": "November 25th",
+            "line2": "2021 - 03:00PM UTC"
+        },
+        "descriptionItems": [
+            {
+                "title": "Art Contest",
+                "text": "Developer Art Contest with NFT Rewards to the most voted art."
+            },
+            {
+                "title": "Raffles",
+                "text": "Invite your friends to our community and receive raffle tickets to win NFT prizes."
+            }
+        ]
+    },
+    {
+        "phase": 3,
+        "date": {
+            "line1": "December 2nd",
+            "line2": "2021 - 03:00PM UTC"
+        },
+        "descriptionItems": [
+            {
+                "title": "Open Public Sale",
+                "text": "Developer Art Contest with NFT Rewards to the most voted art."
+            }
+        ]
+    },
+    {
+        "phase": 4,
+        "date": {
+            "line1": "November 12th",
+            "line2": "2021 - 03:00PM UTC"
+        },
+        "descriptionItems": [
+            {
+                "title": "Art Contest",
+                "text": "Developer Art Contest with NFT Rewards to the most voted art."
+            },
+            {
+                "title": "Grow the community",
+                "text": "Invite your friends to our community and receive raffle tickets to win NFT prizes."
+            }
+        ]
+    }
+]
