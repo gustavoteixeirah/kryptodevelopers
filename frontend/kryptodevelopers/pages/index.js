@@ -15,9 +15,10 @@ export default function Home() {
             {process.env.NEXT_PUBLIC_VERCEL_ENV !== 'production' && (
                 <div className="text-xs">
                     Vercel ENV: {process.env.NEXT_PUBLIC_VERCEL_ENV}
+                    <br />
                     Vercel REF: {process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF}
-                    Commit version:{' '}
-                    {process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA}
+                    <br />
+                    Commit version: {process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA}
                 </div>
             )}
         </Base>
