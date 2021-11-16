@@ -1,3 +1,0 @@
-0.png
-pinning hash:  QmYW2F2Ag2Bw3E3sYqzzrAjArzM54Dme6kEAq62QHrSwUT
-command... ['curl', '-X', 'POST', 'https://ipfs2arweave.com/permapin/QmYW2F2Ag2Bw3E3sYqzzrAjArzM54Dme6kEAq62QHrSwUT']

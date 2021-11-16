@@ -11,7 +11,7 @@ const kryptoDeveloperApi = async (req, res) => {
 		let metadata = {};
 		metadata = {
 			description:
-				"KryptoDevelopers are...",
+				"Developers are the key people behind any software that has ever been built. Software programs for simple led switching to space programs. Simple arithmetic to complex calculus. This NFT collection seeks to illustrate these hard-working people that expends their days in front of a computer to solve problems.",
 			tokenId: parseInt(query),
 			image: `https://gateway.pinata.cloud/ipfs/${trait["imageIPFS"]}`,
 			external_url: "https://kryptodevelopers.vercel.app",
@@ -43,13 +43,11 @@ const kryptoDeveloperApi = async (req, res) => {
 			],
 		};
 
-		// console.log(metadata)
-
 		res.statusCode = 200;
 		res.json(metadata);
 	} else {
 		res.statuscode = 404;
-		res.json({ error: "The developer you requested is out of range" });
+		res.json({ error: "The developer you requested is out of range!" });
 	}
 };
 

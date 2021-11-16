@@ -4,7 +4,6 @@ import Base from '../components/Base';
 import Button from '../components/Button';
 import kryptoDevelopers from './KryptoDevelopers.json';
 
-// const CONTRACT_ADDRESS = "0xb72296B78aBfc7f3BB156DEd531eA82B4f3F035E";
 const CONTRACT_ADDRESS = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS;
 const EXPLORER = process.env.NEXT_PUBLIC_EXPLORER;
 const CONTRACT_NETWORK = process.env.NEXT_PUBLIC_NETWORK;

@@ -28,9 +28,10 @@ const NavBar = () => {
             <NavBarLink href="#team">Team</NavBarLink>
             {/* <NavBarLink href="#social_links">Social Links</NavBarLink> */}
           </div>
-          <Button as="a" href="/mint" size="sm">
+          {/* TODO ENABLE WHEN MINTING IS ACTIVE */}
+          {/* <Button disabled={true} as="a" href="/mint" size="sm">
             Mint NFT
-          </Button>
+          </Button> */}
         </div>
 
         <Transition

@@ -68,19 +68,30 @@ for trait in traits:
 
     # Convert to RGB
     rgb_im = com5.convert('RGB')
-    resizedImage = rgb_im.resize((512, 512), Image.NEAREST)
+    resizedImage = rgb_im.resize((128, 128), Image.NEAREST)
 
     file_name = str(trait["tokenId"]) + ".png"
-    resizedImage.save("./output/" + file_name)
+
+    if (trait["tokenId"] < 2000):
+        resizedImage.save("./output/chunk1/" + file_name)
+    elif (trait["tokenId"] < 4000):
+        resizedImage.save("./output/chunk2/" + file_name)
+    elif (trait["tokenId"] < 6000):
+        resizedImage.save("./output/chunk3/" + file_name)
+    elif (trait["tokenId"] < 8000):
+        resizedImage.save("./output/chunk4/" + file_name)
+    else:
+        resizedImage.save("./output/chunk5/" + file_name)
+        
     print(f'{str(trait["tokenId"])} done')
 
 
-# with open("imagegeneration/hashes2.json", 'r') as f:
+# with open("imagegeneration/hashes.json", 'r') as f:
 #     hashes = json.load(f)
 
 # for k,v in hashes.items():
 #     print(k,v)
 #     traits[v]["imageIPFS"] = k
 
-# with open('traits.json', 'w') as outfile:
+# with open('traitsFinal.json', 'w') as outfile:
 #     json.dump(traits, outfile, indent=4)
