@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Web3 from 'web3';
 import Base from '../components/Base';
 import Button from '../components/Button';
@@ -9,7 +9,6 @@ const EXPLORER = process.env.NEXT_PUBLIC_EXPLORER;
 const CONTRACT_NETWORK = process.env.NEXT_PUBLIC_NETWORK;
 
 export default function Mint() {
-    // FOR WALLET
     const [signedIn, setSignedIn] = useState(false);
     const [mintLoading, setMintLoading] = useState(false);
     const [walletAddress, setWalletAddress] = useState(null);
@@ -270,13 +269,6 @@ export default function Mint() {
                         </div>
                     )}
                 </div>
-            </div>
-
-            <div className="mt-4 text-lg">
-                Vercel ENV: {process.env.NEXT_PUBLIC_VERCEL_ENV}
-            </div>
-            <div className="text-lg">
-                Commit version: {process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA}
             </div>
         </Base>
     );
