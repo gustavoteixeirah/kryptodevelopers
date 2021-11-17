@@ -11,15 +11,15 @@ const Roadmap = () => {
             >
                 Roadmap
             </h2>
-            <div className="grid md:grid-cols-2 gap-16 mt-12 px-8 relative">
+            <div className="grid lg:grid-cols-2 gap-16 mt-12 px-8 relative">
                 {roadmap.map((item, index) => (
                     <React.Fragment key={item.phase}>
-                        {index % 2 !== 0 && <div />}
+                        {index % 2 !== 0 && <div className="hidden lg:block" />}
                         <RoadmapItem item={item} odd={index % 2 !== 0} />
-                        {index % 2 === 0 && <div />}
+                        {index % 2 === 0 && <div className="hidden lg:block" />}
                     </React.Fragment>
                 ))}
-                <div className="absolute h-full w-1 bg-gray-700 left-1/2"></div>
+                <div className="absolute h-full w-1 bg-gray-700 left-1/2 hidden lg:block"></div>
             </div>
         </div>
     );
