@@ -4,6 +4,7 @@ import Roadmap from '../components/Roadmap';
 import NavBar from '../components/NavBar';
 import Team from '../components/Team';
 import Title from '../components/Title';
+import Footer from '../components/Footer';
 
 export default function Home() {
     return (
@@ -13,16 +14,7 @@ export default function Home() {
             <Description />
             <Roadmap />
             <Team />
-            {process.env.NEXT_PUBLIC_VERCEL_ENV !== 'production' && (
-                <div className="text-xs">
-                    Vercel ENV: {process.env.NEXT_PUBLIC_VERCEL_ENV}
-                    <br />
-                    Vercel REF: {process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF}
-                    <br />
-                    Commit version:{' '}
-                    {process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA}
-                </div>
-            )}
+            <Footer />
         </Base>
     );
 }
