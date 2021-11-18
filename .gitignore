@@ -3,3 +3,4 @@ contract/build/
 contract/.env
 frontend/node_modules/
 frontend/.next/
+contract/abis/
