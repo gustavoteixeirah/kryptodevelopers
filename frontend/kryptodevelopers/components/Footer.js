@@ -3,7 +3,7 @@ import { SocialIcon } from 'react-social-icons';
 
 const Footer = () => {
     return (
-        <div className="w-full py-10" style={{ backgroundColor: '#0c111c ' }}>
+        <div className="w-full py-10" style={{ backgroundColor: '#0d121e ' }}>
             <div className="max-w-4xl mx-auto px-8 shadow-inner">
                 <div className="text-sm text-gray-400 text-center">
                     Copyright &copy; {new Date().getFullYear()}{' '}
@@ -12,15 +12,20 @@ const Footer = () => {
                 <div className="flex gap-4 justify-center mt-4">
                     <SocialIcon
                         url="https://www.instagram.com/kryptodevelopers/"
-                        style={{ width: 38, height: 38 }}
+                        style={{ width: 32, height: 32 }}
                     />
                     <SocialIcon
                         url="https://twitter.com/_kryptodevs/"
-                        style={{ width: 38, height: 38 }}
+                        style={{ width: 32, height: 32 }}
                     />
                     <SocialIcon
-                        url="https://discord.gg/TSP9MJ9k/"
-                        style={{ width: 38, height: 38 }}
+                        url="https://discord.gg/HcAXxVreXe"
+                        style={{ width: 32, height: 32 }}
+                    />
+                    <SocialIcon
+                        url="https://www.facebook.com/people/KryptoDevelopers/100074972386339/"
+                        style={{ width: 32, height: 32 }}
+                        bgColor="#1877f2"
                     />
                 </div>
                 {process.env.NEXT_PUBLIC_VERCEL_ENV !== 'production' && (

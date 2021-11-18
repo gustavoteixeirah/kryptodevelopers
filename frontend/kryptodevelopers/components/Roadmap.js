@@ -19,7 +19,7 @@ const Roadmap = () => {
                         {index % 2 === 0 && <div className="hidden lg:block" />}
                     </React.Fragment>
                 ))}
-                <div className="absolute h-full w-1 bg-gray-700 left-1/2 hidden lg:block"></div>
+                <div className="absolute h-full w-1 bg-gray-800 left-1/2 hidden lg:block"></div>
             </div>
         </div>
     );

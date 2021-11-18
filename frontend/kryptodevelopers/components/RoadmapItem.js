@@ -4,9 +4,12 @@ const RoadmapItem = (props) => {
     const { item, odd } = props;
 
     return (
-        <div className="py-4 px-4 md:py-6 md:px-8 rounded-2xl bg-gray-800 w-full lg:w-96 shadow-lg relative">
+        <div
+            className="py-4 px-4 md:py-6 md:px-8 rounded-2xl bg-gray-800 w-full lg:w-96 shadow-lg relative"
+            style={{ backgroundColor: '#0d121e ' }}
+        >
             <div className="flex">
-                <div className="flex items-center justify-center rounded-2xl bg-gray-700 w-12 h-12 md:w-16 md:h-16 font-semibold text-xl md:text-2xl shadow-xl">
+                <div className="flex items-center justify-center rounded-2xl bg-gray-800 w-12 h-12 md:w-16 md:h-16 font-semibold text-xl md:text-2xl shadow-xl">
                     {item.phase}
                 </div>
                 <div className="flex items-center font-semibold text-md md:text-lg ml-8">
@@ -26,12 +29,12 @@ const RoadmapItem = (props) => {
             ))}
             {odd && (
                 <div className="absolute bottom-1/2 right-full z-10 hidden lg:flex items-center justify-center">
-                    <div className="w-7 h-1 bg-gray-700"></div>
+                    <div className="w-7 h-1 bg-gray-800"></div>
                 </div>
             )}
             {!odd && (
                 <div className="absolute bottom-1/2 left-full z-10 hidden lg:flex items-center justify-center">
-                    <div className="w-8 h-1 bg-gray-700"></div>
+                    <div className="w-8 h-1 bg-gray-800"></div>
                 </div>
             )}
         </div>

@@ -8,7 +8,7 @@ const Team = () => {
             <h2 id="team" className="text-4xl text-center font-semibold">
                 Team
             </h2>
-            <div className="grid lg:grid-cols-2 gap-16 mt-12 px-8">
+            <div className="grid lg:grid-cols-3 gap-4 mt-12 px-8">
                 {team.map((data) => (
                     <TeamMember data={data} key={data.name} />
                 ))}
