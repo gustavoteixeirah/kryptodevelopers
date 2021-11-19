@@ -6,7 +6,7 @@ const Roadmap = () => {
     return (
         <div className="max-w-4xl mx-auto mt-16">
             <h2
-                id="description"
+                id="roadmap"
                 className="text-4xl text-center font-semibold mb-12"
             >
                 Roadmap

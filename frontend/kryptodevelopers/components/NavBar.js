@@ -33,7 +33,7 @@ const NavBar = () => {
                     <div className="hidden md:flex gap-5 lg:gap-8 items-center text-md lg:text-xl">
                         <NavBarLink href="#home">Home</NavBarLink>
                         <NavBarLink href="#description">Description</NavBarLink>
-                        {/* <NavBarLink href="#roadmap">Roadmap</NavBarLink> */}
+                        <NavBarLink href="#roadmap">Roadmap</NavBarLink>
                         <NavBarLink href="#team">Team</NavBarLink>
                         {/* <NavBarLink href="#social_links">Social Links</NavBarLink> */}
                     </div>
