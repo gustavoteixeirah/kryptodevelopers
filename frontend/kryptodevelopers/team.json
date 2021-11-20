@@ -1,43 +1,43 @@
 [
-	{
-		"picture": "https://gustavoteixeira.dev/ProfilePic.jpeg",
-		"name": "Gustavo Teixeira",
-		"role": "Software Engineer",
-		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rhoncus eget iaculis vitae elementum, in sagittis, hac.",
-		"social": [
-			"https://www.linkedin.com/in/iwhrim/",
-			"https://twitter.com/gustavot_dev",
-			{
-				"url": "https://github.com/gustavoteixeiradev",
-				"bgColor": "#eee"
-			}
-		]
-	},
-	{
-		"picture": "https://avatars.githubusercontent.com/u/5933645?v=4",
-		"name": "Renan Britz",
-		"role": "Software Engineer",
-		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rhoncus eget iaculis vitae elementum, in sagittis, hac.",
-		"social": [
-			"https://www.linkedin.com/in/renan-pires-britz/",
-			{
-				"url": "https://github.com/renanBritz",
-				"bgColor": "#eee"
-			}
-		]
-	},
-	{
-		"picture": "https://avatars.githubusercontent.com/u/52423870?v=4",
-		"name": "Marcelo Cardoso",
-		"role": "Pixel Artist",
-		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rhoncus eget iaculis vitae elementum, in sagittis, hac.",
-		"social": [
-			"https://www.linkedin.com/in/marcelo-cardoso-do-carmo-051658a2/",
-			"https://twitter.com/MarceloOcean",
-			{
-				"url": "https://github.com/marcelomanx4",
-				"bgColor": "#eee"
-			}
-		]
-	}
+    {
+        "picture": "Gustavo.jpeg",
+        "name": "Gustavo Teixeira",
+        "role": "Software Engineer",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rhoncus eget iaculis vitae elementum, in sagittis, hac.",
+        "social": [
+            "https://www.linkedin.com/in/iwhrim/",
+            "https://twitter.com/gustavot_dev",
+            {
+                "url": "https://github.com/gustavoteixeiradev",
+                "bgColor": "#eee"
+            }
+        ]
+    },
+    {
+        "picture": "/Renan.jfif",
+        "name": "Renan Britz",
+        "role": "Software Engineer",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rhoncus eget iaculis vitae elementum, in sagittis, hac.",
+        "social": [
+            "https://www.linkedin.com/in/renan-pires-britz/",
+            {
+                "url": "https://github.com/renanBritz",
+                "bgColor": "#eee"
+            }
+        ]
+    },
+    {
+        "picture": "Marcelo.png",
+        "name": "Marcelo Cardoso",
+        "role": "Pixel Artist",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rhoncus eget iaculis vitae elementum, in sagittis, hac.",
+        "social": [
+            "https://www.linkedin.com/in/marcelo-cardoso-do-carmo-051658a2/",
+            "https://twitter.com/MarceloOcean",
+            {
+                "url": "https://github.com/marcelomanx4",
+                "bgColor": "#eee"
+            }
+        ]
+    }
 ]

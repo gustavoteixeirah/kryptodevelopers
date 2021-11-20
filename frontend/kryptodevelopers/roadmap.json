@@ -1,0 +1,66 @@
+[
+    {
+        "phase": 1,
+        "date": {
+            "line1": "December 1st",
+            "line2": "2021 - 03:00PM UTC"
+        },
+        "descriptionItems": [
+            {
+                "title": "Whitelist Sale",
+                "text": "Whitelist members will have access to mint the first 3.000 NFTs and receive a one time coupon for discount on ETB Courses! <span class=\"text-2xl\">🎫</span>"
+            },
+            {
+                "title": "Award ETB Hackaton Teams",
+                "text": "We won the hackaton <span class=\"text-2xl\">🎉</span>, but we feel like other participants should have their efforts rewarded! So we are giving away 20 NFTs to the other teams. <span class=\"text-2xl\">🥳</span>"
+            }
+        ]
+    },
+    {
+        "phase": 2,
+        "date": {
+            "line1": "December 2nd",
+            "line2": "2021 - 03:00PM UTC"
+        },
+        "descriptionItems": [
+            {
+                "title": "Art Contest",
+                "text": "Developer Art Contest with NFT Rewards to the most voted art. <span class=\"text-2xl\">🎨</span>"
+            },
+            {
+                "title": "Raffles",
+                "text": "Share our content and invite your friends to our community to receive raffle tickets and have a chance to win NFT prizes! <span class=\"text-2xl\">🎟️🎁</span>"
+            }
+        ]
+    },
+    {
+        "phase": 3,
+        "date": {
+            "line1": "December 8th",
+            "line2": "2021 - 03:00PM UTC"
+        },
+        "descriptionItems": [
+            {
+                "title": "Open Public Sale",
+                "text": "Minting will be available for everyone! <span class=\"text-2xl\">😉</span>"
+            }
+        ]
+    },
+    {
+        "phase": 4,
+        "date": {
+            "line1": "December 15th",
+            "line2": "2021 - 03:00PM UTC"
+        },
+        "descriptionItems": [
+            {
+                "title": "ETB Courses Discount",
+                "text": "KryptoDevelopers NFT holders are eligible to get ETB courses discounts. <span class=\"text-2xl\">📚🔝</span>"
+            },
+            {
+                "title": "Future Access to Community Resources",
+                "text": "As the community grows, KryptoDevelopers NFT holders will get access to exclusive community resources, like merch, courses and more! <span class=\"text-2xl\">🌟</span>"
+            }
+        ]
+    }
+]
