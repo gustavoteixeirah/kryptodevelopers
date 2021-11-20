@@ -24,7 +24,10 @@ const RoadmapItem = (props) => {
                     <div className="text-md sm:text-lg md:text-xl text-white mt-8 font-semibold">
                         {description.title}
                     </div>
-                    <div className="text-gray-400 mt-2">{description.text}</div>
+                    <div
+                        className="text-gray-400 mt-2"
+                        dangerouslySetInnerHTML={{ __html: description.text }}
+                    ></div>
                 </React.Fragment>
             ))}
             {odd && (

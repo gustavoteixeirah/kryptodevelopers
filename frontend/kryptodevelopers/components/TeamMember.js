@@ -30,14 +30,14 @@ const TeamMember = (props) => {
                             <SocialIcon
                                 url={url.url}
                                 key={url.url}
-                                style={{ width: 38, height: 38 }}
+                                style={{ width: 32, height: 32 }}
                                 bgColor={url.bgColor}
                             />
                         ) : (
                             <SocialIcon
                                 url={url}
                                 key={url}
-                                style={{ width: 38, height: 38 }}
+                                style={{ width: 32, height: 32 }}
                             />
                         )
                     )}
