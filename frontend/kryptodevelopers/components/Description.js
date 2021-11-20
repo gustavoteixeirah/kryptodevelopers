@@ -23,7 +23,7 @@ const Description = () => {
                 </div>
                 <div className="flex-1 lg:mt-16">
                     <img
-                        src="https://gateway.pinata.cloud/ipfs/QmbWUEHirLBp3ePUQgK5MyCKKES5jHCXJpTHrrAHeFFc39"
+                        src="/divulgacao.gif"
                         className="rounded-xl shadow-lg"
                     />
                 </div>
