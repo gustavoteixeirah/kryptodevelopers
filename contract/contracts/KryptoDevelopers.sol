@@ -21,7 +21,7 @@ contract KryptoDevelopers is ERC721Enumerable, Ownable {
 
     bool public whitelistSaleIsActive = false;
 
-    uint256 public constant MAX_MINT_QUANTITY = 25;
+    uint256 public constant MAX_MINT_QUANTITY = 25; 
 
     uint256 public constant MAX_DEVELOPERS = 10000;
 
@@ -31,7 +31,7 @@ contract KryptoDevelopers is ERC721Enumerable, Ownable {
     uint256 public constant developerPrice = 1000000000000000000; // 1 MATIC
 
     // WHITELIST
-    mapping(address => bool) _whiteListAllowed; //+1
+    mapping(address => bool) public _whiteListAllowed; //+1
 
     // WITHDRAW ADDRESSES
     // ETB Community funds

@@ -27,7 +27,7 @@ contract("KryptoDevelopers", (accounts) => {
 			assert.equal(symbol, "KDEV");
 		});
 
-		it("baseURI match", async () => {
+		it("baseURI", async () => {
 			const name = await contract.developersBaseURI();
 			assert.equal(name, "https://kryptodevelopers.vercel.app/api/");
 		});
