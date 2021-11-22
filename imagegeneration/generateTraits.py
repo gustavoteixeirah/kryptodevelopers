@@ -43,7 +43,7 @@ print(sum(paintingweights))
 print(sum(beveragesweights))
 print(sum(robothairweights))
 
-TOTAL_DEVELOPERS = 5
+TOTAL_DEVELOPERS = 1000
 
 traits = []
 
@@ -54,10 +54,10 @@ def createCombo():
 
     trait["Background"] = random.choices(backgrounds, backgroundweights)[0]
     trait["Developer"] = random.choices(skinphototype, skinphototypeweights)[0]
-    trait["Developer"] = "Jack"
+    # trait["Developer"] = "Jack"
 
     trait["Accessory"] = random.choices(faceaccessory, faceaccessoryweights)[0]
-    trait["Accessory"] = "Earring"
+    # trait["Accessory"] = "Earring"
 
     if trait["Developer"] == "Gustavo" or trait["Developer"] == "Renan" or trait["Developer"] == "Marcelo" or trait["Developer"] == "V" or trait["Developer"] == "Julien" or trait["Developer"] == "Robot":
         trait["Accessory"] = "None"
@@ -72,14 +72,13 @@ def createCombo():
                 trait["Hair"] = random.choices(
                     femalehair, femalehairweights)[0]
 
-    trait["Hair"] = "Nerd Medium"
-
+    # trait["Hair"] = "Nerd Medium"
 
     trait["Painting"] = random.choices(painting, paintingweights)[0]
-    trait["Painting"] = "Solidity"
+    # trait["Painting"] = "Solidity"
 
     trait["Beverage"] = random.choices(beverages, beveragesweights)[0]
-    trait["Beverage"] = "Coffee"
+    # trait["Beverage"] = "Coffee"
 
     if trait in traits:
         return createCombo()

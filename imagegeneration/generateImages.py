@@ -68,7 +68,7 @@ for trait in traits:
 
     # Convert to RGB
     rgb_im = com5.convert('RGB')
-    resizedImage = rgb_im.resize((128, 128), Image.NEAREST)
+    resizedImage = rgb_im.resize((512, 512), Image.NEAREST)
 
     file_name = str(trait["tokenId"]) + ".png"
 
