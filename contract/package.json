@@ -1,5 +1,5 @@
 {
-	"name": "KryptoDevelopers",
+	"name": "kryptodevelopers",
 	"version": "1.0.0",
 	"description": "",
 	"main": "truffle-config.js",
@@ -8,7 +8,7 @@
 	},
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"build-contracts": "sol-merger \"./contracts/*.sol\" ./build"
+		"build": "sol-merger \"./contracts/*.sol\" ./build"
 	},
 	"author": "Gustavo Teixeira",
 	"license": "ISC",

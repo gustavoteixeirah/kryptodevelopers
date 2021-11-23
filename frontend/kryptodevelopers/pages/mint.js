@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
 import Web3 from 'web3';
+import { ABI } from '../config.js';
 import Base from '../components/Base';
 import Button from '../components/Button';
-import kryptoDevelopers from './KryptoDevelopers.json';
 
 const CONTRACT_ADDRESS = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS;
 const EXPLORER = process.env.NEXT_PUBLIC_EXPLORER;
@@ -58,8 +58,7 @@ export default function Mint() {
         const networkId = await web3.eth.net.getId();
         console.log('network id', networkId);
         if (networkId) {
-            const abi = kryptoDevelopers.abi;
-            const contract = new web3.eth.Contract(abi, CONTRACT_ADDRESS);
+            const contract = new web3.eth.Contract(ABI, CONTRACT_ADDRESS);
             console.log('contract', contract);
             setContract(contract);
 
@@ -100,13 +99,15 @@ export default function Mint() {
         try {
             // checks if connected network is mainnet (change this to rinkeby if you wanna test on testnet)
             await window.ethereum.enable();
+            // const networkId = await web3.eth.net.getId();
             const network = await window.web3.eth.net.getNetworkType();
-
-            if (network !== CONTRACT_NETWORK) {
+            const networkId = await window.web3.eth.net.getId();
+            console.log('networkId=>', networkId);
+            if (networkId !== CONTRACT_NETWORK) {
                 alert(
                     'You are on ' +
                         network +
-                        " network. Change network to mainnet or you won't be able to do anything here"
+                        " network. Change network to POLYGON MAINNET or you won't be able to do anything here"
                 );
             }
 
@@ -193,7 +194,9 @@ export default function Mint() {
                     <div>Wallet Address: {walletAddress} </div>
                     <div>Developers already minted: {totalSupply} / 10000 </div>
                     {/* <div>Sale is  {saleStatus ? 'Active!' : 'Not active!'} </div> */}
-                    <div>Developer Price: {developerPrice / 10 ** 18} ETH </div>
+                    <div>
+                        Developer Price: {developerPrice / 10 ** 18} MATIC{' '}
+                    </div>
                 </div>
 
                 <div className="mintForm">
