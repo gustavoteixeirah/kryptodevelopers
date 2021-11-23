@@ -12,7 +12,7 @@ export default function Home() {
             <NavBar />
             <Title />
             <Description />
-            <Roadmap />
+            {/* <Roadmap /> */}
             <Team />
             <Footer />
         </Base>
