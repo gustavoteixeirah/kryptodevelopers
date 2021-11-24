@@ -8,8 +8,10 @@ import json
 # "QmejsSBzpYyeG8SgyZejrCxrABS4t7e1fjysstBJkNr6Bg": "10",
 # ...
 # }
-        
-with open("traits.json", 'r') as f:
+with open("./traits.json", 'r') as f:
+    traits = json.load(f)
+
+with open("./finalHashes.json", 'r') as f:
     hashes = json.load(f)
     
 for k,v in hashes.items():
@@ -17,5 +19,5 @@ for k,v in hashes.items():
     traits[v]["imageIPFS"] = k
 
 
-with open('traitsfinal.json', 'w') as outfile:
-json.dump(traits, outfile, indent=4)
+with open('metadata.json', 'w') as outfile:
+    json.dump(traits, outfile, indent=4)
