@@ -225,7 +225,7 @@ export default function Mint() {
                                 `MINT ${developersMintQtty} developer(s) for ${
                                     (developerPrice * developersMintQtty) /
                                     10 ** 18
-                                } ETH + GAS`}
+                                } MATIC + GAS`}
                         </Button>
                     ) : (
                         <Button>
