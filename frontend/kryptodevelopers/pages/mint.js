@@ -56,10 +56,8 @@ export default function Mint() {
     const loadBlockchainData = async () => {
         const web3 = window.web3;
         const networkId = await web3.eth.net.getId();
-        console.log('network id', networkId);
         if (networkId) {
             const contract = new web3.eth.Contract(ABI, CONTRACT_ADDRESS);
-            console.log('contract', contract);
             setContract(contract);
 
             const saleStatus = await contract.methods.saleIsActive().call();
@@ -75,8 +73,6 @@ export default function Mint() {
 
             const accounts = await web3.eth.getAccounts();
 
-            console.log(accounts);
-
             if (accounts.length > 0) {
                 setWalletAddress(accounts[0]);
                 setSignedIn(true);
@@ -87,7 +83,6 @@ export default function Mint() {
     };
 
     const signIn = async () => {
-        console.log('signin');
         if (typeof window.web3 !== 'undefined') {
             // Use existing gateway
             window.web3 = new Web3(window.ethereum);
@@ -102,8 +97,11 @@ export default function Mint() {
             // const networkId = await web3.eth.net.getId();
             const network = await window.web3.eth.net.getNetworkType();
             const networkId = await window.web3.eth.net.getId();
-            console.log('networkId=>', networkId);
-            if (networkId !== CONTRACT_NETWORK) {
+            console.log('typeof  networkId=>', typeof  networkId);
+            console.log('(networkId.toString())typeof  networkId=>', typeof  (networkId.toString()));
+            console.log('typeof CONTRACT_NETWORK=>', typeof CONTRACT_NETWORK);
+            //TODO FIX THIS
+            if (!((networkId.toString()) === CONTRACT_NETWORK)) {
                 alert(
                     'You are on ' +
                         network +
