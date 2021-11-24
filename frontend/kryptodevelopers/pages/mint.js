@@ -97,9 +97,6 @@ export default function Mint() {
             // const networkId = await web3.eth.net.getId();
             const network = await window.web3.eth.net.getNetworkType();
             const networkId = await window.web3.eth.net.getId();
-            console.log('typeof  networkId=>', typeof  networkId);
-            console.log('(networkId.toString())typeof  networkId=>', typeof  (networkId.toString()));
-            console.log('typeof CONTRACT_NETWORK=>', typeof CONTRACT_NETWORK);
             //TODO FIX THIS
             if (!((networkId.toString()) === CONTRACT_NETWORK)) {
                 alert(
