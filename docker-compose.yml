@@ -1,0 +1,10 @@
+version: '3'
+services:
+
+  database:
+    image: 'mongo:latest'
+    container_name: 'mongo'
+    environment:
+      - MONGO_INITDB_DATABASE=KryptoDevelopersDB
+    ports:
+      - 27017:27017

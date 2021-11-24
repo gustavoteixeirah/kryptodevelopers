@@ -2,7 +2,7 @@ import json
 import random
 
 backgrounds = ["The Office", "Beach", "Dark", "Tower", "Company", "Kitchen"]
-backgroundweights = [35, 5, 18, 2, 30, 10]
+backgroundweights = [35.5, 1.5, 18, 5, 30, 10]
 
 skinphototype = ["Jack", "Rose", "Alien",
                  "Robot", "Gustavo", "Renan", "Marcelo", "Julien", "V"]
@@ -11,7 +11,7 @@ skinphototypeweights = [47.40, 47.40, 4.10,
 
 faceaccessory = ["None", "Guy Folkes", "Sunglasses", "Jason",
                  "Juliete", "Milos", "Eyeglasses", "Earring", "Eye Patch"]
-faceaccessoryweights = [11.5, 2, 15, 3, 15, 10, 28, 0.5, 15]
+faceaccessoryweights = [12.5, 1, 17.5, 0.5, 15, 10, 28, 0.5, 15]
 
 hair = ["None", "Dr Dree", "Goku", "Long", "Moicano",
         "Nerd", "Nerd Medium", "Military", "Very Short"]
@@ -19,20 +19,20 @@ hairweights = [5, 2, 5, 9, 15, 15, 28, 6, 15]
 
 femalehair = ["None", "Channel", "Straight Long", "Ponytail",
               "Ponytail Short",  "Short", "Vanda", "Vortex"]
-femalehairweights = [10, 2, 5, 9, 15, 15, 28, 16]
+femalehairweights = [5, 2, 10, 9, 15, 15, 28, 16]
 
 robothair = ["None", "Channel", "Straight Long", "Ponytail",
              "Short", "Vanda", "Vortex", "Dr Dree", "Goku", "Long", "Moicano",
              "Nerd", "Nerd Medium", "Military", "Very Short"]
-robothairweights = [4, 3, 6, 5, 6, 12, 9, 5, 12, 7, 9, 1, 5, 10, 6]
+robothairweights = [4, 3, 6, 5, 6, 12, 9, 5, 12, 7, 9, 10, 5, 1, 6]
 
 painting = ["None", "Java", "Javascript", "Go",
             "Python", "Ruby", "Solidity", "CSharp"]
-paintingweights = [5, 17, 20, 9, 15, 15, 8, 11]
+paintingweights = [5, 17, 22.5, 9, 20, 15, 0.5, 11]
 
 beverages = ["None", "Coffee", "Soda", "Juice",
              "Energetic", "Protein Shake", "Tea", "Water Bottle"]
-beveragesweights = [10, 40, 13, 5, 15, 5, 2, 10]
+beveragesweights = [10, 40, 13, 5, 15, 1, 0.5, 15.5]
 
 # The weights sum must equal 100
 print(sum(backgroundweights))
@@ -43,7 +43,7 @@ print(sum(paintingweights))
 print(sum(beveragesweights))
 print(sum(robothairweights))
 
-TOTAL_DEVELOPERS = 1000
+TOTAL_DEVELOPERS = 10000
 
 traits = []
 
