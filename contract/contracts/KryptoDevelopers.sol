@@ -114,7 +114,7 @@ contract KryptoDevelopers is ERC721Enumerable, Ownable {
     }
 
     function withdrawAll() public onlyOwner {
-        uint256 _each = address(this).balance / 5;
+        uint256 _each = address(this).balance / 4;
         require(payable(t1).send(_each));
         require(payable(t2).send(_each));
         require(payable(t3).send(_each));
